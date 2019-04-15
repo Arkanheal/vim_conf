@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/tmp/cargo-install.jF5Aqfh8iaIC'
+let g:netrw_dirhist_2='/home/pierre/.config/fish/functions'
+let g:netrw_dirhist_3='/etc'
+let g:netrw_dirhist_4='/home/pierre'
+let g:netrw_dirhist_5='/home/pierre/.config/nvim'
