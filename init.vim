@@ -42,6 +42,9 @@ Plug 'arielrossanigo/dir-configs-override.vim'
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
+" Folds
+Plug 'tweekmonster/braceless.vim'
+
 " Code commenter
 Plug 'scrooloose/nerdcommenter'
 
@@ -110,13 +113,13 @@ Plug 'lilydjwg/colorizer'
 Plug 't9md/vim-choosewin'
 
 " Automatically sort python imports
-Plug 'fisadev/vim-isort'
+"Plug 'fisadev/vim-isort'
 
 " Async linter
 Plug 'w0rp/ale'
 
 " Highlight matching html tags
-Plug 'valloric/MatchTagAlways'
+"Plug 'valloric/MatchTagAlways'
 
 " Generate html in a simple way
 Plug 'mattn/emmet-vim'
@@ -383,6 +386,9 @@ let g:yankring_history_dir = '~/.config/nvim/'
 let g:airline_powerline_fonts = 0
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#whitespace#enabled = 0
+
+" Folds --------------------------------
+autocmd FileType python,coffee BracelessEnable +indent +fold
 
 " to use fancy symbols for airline, uncomment the following lines and use a
 " patched font (more info on docs/fancy_symbols.rst)
