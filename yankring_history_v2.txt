@@ -1,0 +1,100 @@
+",V
+    :tnoremap <Esc> <C-\><C-n>,V
+,V
+meta={'metacrawler': response.meta['metacrawler']},v
+scrapy.Request(url=metacrawlers.lien, callback=self.parse),v
+            item["title"],V
+            # TODO get info we can get on product list page,V
+from urllib.parse import urlparse,V
+import time,V
+from django.conf import settings,V
+中国大百科全书出版社,v
+self.metacrawler_status_waiting,v
+ ,v
+            import pdb; pdb.set_trace(),V
+        self.assertEqual(),V
++,v
+ self.metacrawler is set Crawling in init,v
+        links = spider.get_some_links(),V
+        spider = DangDangProduct(),V
+        with transaction.atomic():,V
+::TestCrawlerDangDangOffline::test_get_some_links,v
+        metacrawler_lvl3 = MetaCrawler.objects.create(            metacrawler_categories=cat_lvl_3,            lien='http://totolvl3.fr',            metacrawler_status=self.metacrawler_status_waiting        ),V
+        ,V
+        p,V
+        MetaCrawler.objects.create(            metacrawler_categories=cat_random,            lien="http://toto.fr",            metacrawler_status=self.metacrawler_status_waiting        ),V
+from cia.tests.test_crawler import TestCrawler,V
+        Renvoi 50 metacrawlers en 'waiting' et le passe en 'crawling',V
+Je passe les metacrawlers que l'on utilise en 'crawling'.,v
+    @staticmethod    def get_lvl_0_cat(metacrawler):        """        Renvoi la catégorie de niveau 0 du metacrawler.        :param metacrawler: Le MetaCrawler dont on cherche la catégorie mère.        :return: L'id de la catégorie de niveau 0 à laquelle le MetaCrawler appartient.        """        categorie_id = Categorie.objects.get(            id=metacrawler.metacrawler_categories_id)        return categorie_id.get_root().id,V
+from django.db.models import Case, IntegerField, When,V
+                .annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField(),                    )                )                .order_by("is_pw", "-metacrawler_categories__level", "-date_created")[,V
+\,v
+0,v
+.,v
+int,v
+¥,v
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">,v
+http://category.dangdang.com/cp01.01.01.00.00.00-srsort_xlowprice_desc.html,v
+return_sample_page_price_sorted,v
+        """,V
+        Test if split_products ,V
+)D"a1I$cq5a7@;:>,v
+    def get_some_links():        """        Renvoi 50 metacrawlers en 'waiting' et le passe en 'crawling'        :return: Une liste de Metacrawlers.        """        with transaction.atomic():            metacrawler_status_crawling, created = MetaCrawlerStatus.objects.get_or_create(nom='Crawling')            # Je récupère les metacrawlers waiting, avec infos status_id et categorie, order by level DESC pour avoir            # les categories filles avant les mères et donc avoir le niveau le plus            # spécialisé de catégorisation.            # We also must get PW links before anything else.            # we first need to get tree_id for PW            #  -1 is default value if we don't find PW cat            cat_pw = Categorie.objects.filter(name='Policy Warning').values('tree_id').first()            if cat_pw:                tree_id = cat_pw.get('tree_id', -1)            else:                tree_id = -1            # takes CONCURRENT_REQUESTS links to process everything            # in parallel            limit = settings.CONCURRENT_REQUESTS            metacrawlers_waiting = MetaCrawler.objects.\                select_related('metacrawler_status', 'metacrawler_categories').\                filter(metacrawler_status__nom='Waiting').\                annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField()                    )                ).\                order_by(                    'is_pw',                    '-metacrawler_categories__level',                    '-date_created')[:limit]            if not metacrawlers_waiting:                return None            # Je passe les metacrawlers que l'on utilise en 'crawling'.            for m in metacrawlers_waiting:                m.metacrawler_status = metacrawler_status_crawling                m.date_launched = timezone.now()                m.save()        return metacrawlers_waiting,V
+        # Test with filters already set,V
+        self.assertEqual(urls[0], return_sample_page_list().url[:-5] + "-lp12-hp15.html"),V
+        self.assertEqual(len(urls), 2),V
+        urls = spider.split_in_half(return_sample_page_list().url[:-5], 12, 15),V
+            - We have a basic category url without filters,V
+        There are multiple cases:,V
+            - We have a filtered category url with lp and hp already set,V
+),v
+,,v
+_no_filter,v
+        self.assertEqual(urls[0], return_sample_page_list_no_filter().url[:-5] + "-lp0-hp1275.html"),V
+],v
+2,v
+-,v
+:,v
+[,v
+http://category.dangdang.com/pg1-cp01.01.01.00.00.00.html,v
+products,v
+def return_sample_page_list():    body = open(os.path.join(os.path.dirname(__file__),                             'fixtures/test_dangdang_product_list')).read()    response = HtmlResponse(url='http://category.dangdang.com/pg1-cp01.01.01.00.00.00-lp12-hp15.html',                            status=200, headers=None, body=body, encoding='utf-8')    return response,V
+split_in_half,v
+http://category.dangdang.com/pg1-cp01.01.01.00.00.00-lp12-hp15,v
+    @staticmethod    def get_some_links():        """        Renvoi 50 metacrawlers en 'waiting' et le passe en 'crawling'        :return: Une liste de Metacrawlers.        """        with transaction.atomic():            metacrawler_status_crawling, created = MetaCrawlerStatus.objects.get_or_create(nom='Crawling')            # Je récupère les metacrawlers waiting, avec infos status_id et categorie, order by level DESC pour avoir            # les categories filles avant les mères et donc avoir le niveau le plus            # spécialisé de catégorisation.            # We also must get PW links before anything else.            # we first need to get tree_id for PW            #  -1 is default value if we don't find PW cat            cat_pw = Categorie.objects.filter(name='Policy Warning').values('tree_id').first()            if cat_pw:                tree_id = cat_pw.get('tree_id', -1)            else:                tree_id = -1            # takes CONCURRENT_REQUESTS links to process everything            # in parallel            limit = settings.CONCURRENT_REQUESTS            metacrawlers_waiting = MetaCrawler.objects.\                select_related('metacrawler_status', 'metacrawler_categories').\                filter(metacrawler_status__nom='Waiting').\                annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField()                    )                ).\                order_by(                    'is_pw',                    '-metacrawler_categories__level',                    '-date_created')[:limit]            if not metacrawlers_waiting:                return None            # Je passe les metacrawlers que l'on utilise en 'crawling'.            for m in metacrawlers_waiting:                m.metacrawler_status = metacrawler_status_crawling                m.date_launched = timezone.now()                m.save()        return metacrawlers_waiting,V
+from cia.crawler.crawler.spiders.amazon_spider import get_some_links,V
+e,v
+_,v
+u,v
+v,v
+http://category.dangdang.com/pg1-cp01.01.01.00.00.00-lp12-hp15.html,v
+test_crawler_offline_vue_liste,v
+def return_sample_page_vue_liste():    body = open(os.path.join(os.path.dirname(__file__),                             'fixtures/test_crawler_offline_vue_liste')).read()    response = HtmlResponse(url='http://www.amazon.fr',                            status=200, headers=None, body=body, encoding='utf-8')    return response,V
+, TransactionTestCase,v
+self.,v
+            # takes CONCURRENT_REQUESTS links to process everything            # in parallel            limit = settings.CONCURRENT_REQUESTS            metacrawlers_waiting = MetaCrawler.objects.\                select_related('metacrawler_status', 'metacrawler_categories').\                filter(metacrawler_status__nom='Waiting').\                annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField()                    )                ).\                order_by(                    'is_pw',                    '-metacrawler_categories__level',                    '-date_created')[:limit]            if not metacrawlers_waiting:                return None            # Je passe les metacrawlers que l'on utilise en 'crawling'.            for m in metacrawlers_waiting:                m.metacrawler_status = metacrawler_status_crawling                m.date_launched = timezone.now()                m.save()        return metacrawlers_waiting,V
+callb,v
+sss,1
+            int(response.css("div.bg_change").xpath(".//div)),V
+                # We have all the products now we have to crawl through them                div_list = response.css("div.shoplist")                product_list = div_list.xpath(".//ul/li")                for product in product_list:                    # TODO get info we can get on product list page                    url = product.xpath("p[contains(@class, 'name')]/a/@href").get()                    yield scrapy.Request(url=url, callback=self.parse_product, dont_filter=True),V
+.format{pg_number = pg_number},v
+                product_linenumber = product.xpath("@class").get(),V
+                product_number = product_linenumber[4:],V
+            with self.settings(LANGUAGE_CODE='EN-en'):,V
+16开,v
+                + "?ajax=1", HTTP_ACCEPT_LANGUAGE='en',V
+HTTP_ACCEPT_LANGUAGE='fr',v
+            self.assertIn("0", days_from_now),V
+    品牌： ONEMORE    型号：11GF810525    热卖： 破洞牛仔裤    裤长： 长裤    裤型： 直筒裤    面料： 全棉牛仔布    腰型： 低腰    厚度： 厚    所属分类：    女士服装>牛仔裤,V
+z,V
+                pass,V
+        highest_product = list_div.xpath(".//li[contains(@class, 'line1')]"),V
+from backoffice import settings,V
+            lp_1 = 0            hp_1 = round(max_price / 2, 0)            lp_2 = hp_1 + 1            hp_2 = max_price            urls = []            url_1 = response.url[:-5] + f"-lp{lp_1}-hp{hp_1}.html"            url_2 = response.url[:-5] + f"-lp{lp_2}-hp{hp_2}.html"            urls.extend(url_1, url_2),V
+                else:,V
++f"-lp{lp_1}-hp{hp_1}.html",v
+parse_too_many,v
+600,v
+n,v
+i,v

@@ -39,6 +39,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Override configs by directory
 Plug 'arielrossanigo/dir-configs-override.vim'
 
+" LaTeX plugin
+Plug 'lervag/vimtex'
+
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
@@ -170,6 +173,9 @@ set softtabstop=4
 set shiftwidth=4
 
 set guifont=*
+
+" Remap Esc to leave terminal mode
+:tnoremap <Esc> <C-\><C-n>
 
 " show line numbers
 set nu
@@ -390,6 +396,11 @@ let g:airline#extensions#whitespace#enabled = 0
 " Folds --------------------------------
 autocmd FileType python,coffee BracelessEnable +indent +fold
 
+" vimTeX -------------------------------
+let g:vimtex_compiler_progname = 'nvr'
+
+" vim-polyglot -------------------------
+let g:polyglot_disabled = ['latex']
 " to use fancy symbols for airline, uncomment the following lines and use a
 " patched font (more info on docs/fancy_symbols.rst)
 "if !exists('g:airline_symbols')
