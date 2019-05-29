@@ -1,100 +1,100 @@
-",V
-    :tnoremap <Esc> <C-\><C-n>,V
-,V
-meta={'metacrawler': response.meta['metacrawler']},v
-scrapy.Request(url=metacrawlers.lien, callback=self.parse),v
-            item["title"],V
-            # TODO get info we can get on product list page,V
-from urllib.parse import urlparse,V
-import time,V
-from django.conf import settings,V
-中国大百科全书出版社,v
-self.metacrawler_status_waiting,v
- ,v
-            import pdb; pdb.set_trace(),V
-        self.assertEqual(),V
-+,v
- self.metacrawler is set Crawling in init,v
-        links = spider.get_some_links(),V
-        spider = DangDangProduct(),V
-        with transaction.atomic():,V
-::TestCrawlerDangDangOffline::test_get_some_links,v
-        metacrawler_lvl3 = MetaCrawler.objects.create(            metacrawler_categories=cat_lvl_3,            lien='http://totolvl3.fr',            metacrawler_status=self.metacrawler_status_waiting        ),V
-        ,V
-        p,V
-        MetaCrawler.objects.create(            metacrawler_categories=cat_random,            lien="http://toto.fr",            metacrawler_status=self.metacrawler_status_waiting        ),V
-from cia.tests.test_crawler import TestCrawler,V
-        Renvoi 50 metacrawlers en 'waiting' et le passe en 'crawling',V
-Je passe les metacrawlers que l'on utilise en 'crawling'.,v
-    @staticmethod    def get_lvl_0_cat(metacrawler):        """        Renvoi la catégorie de niveau 0 du metacrawler.        :param metacrawler: Le MetaCrawler dont on cherche la catégorie mère.        :return: L'id de la catégorie de niveau 0 à laquelle le MetaCrawler appartient.        """        categorie_id = Categorie.objects.get(            id=metacrawler.metacrawler_categories_id)        return categorie_id.get_root().id,V
-from django.db.models import Case, IntegerField, When,V
-                .annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField(),                    )                )                .order_by("is_pw", "-metacrawler_categories__level", "-date_created")[,V
-\,v
-0,v
-.,v
-int,v
-¥,v
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">,v
-http://category.dangdang.com/cp01.01.01.00.00.00-srsort_xlowprice_desc.html,v
-return_sample_page_price_sorted,v
-        """,V
-        Test if split_products ,V
-)D"a1I$cq5a7@;:>,v
-    def get_some_links():        """        Renvoi 50 metacrawlers en 'waiting' et le passe en 'crawling'        :return: Une liste de Metacrawlers.        """        with transaction.atomic():            metacrawler_status_crawling, created = MetaCrawlerStatus.objects.get_or_create(nom='Crawling')            # Je récupère les metacrawlers waiting, avec infos status_id et categorie, order by level DESC pour avoir            # les categories filles avant les mères et donc avoir le niveau le plus            # spécialisé de catégorisation.            # We also must get PW links before anything else.            # we first need to get tree_id for PW            #  -1 is default value if we don't find PW cat            cat_pw = Categorie.objects.filter(name='Policy Warning').values('tree_id').first()            if cat_pw:                tree_id = cat_pw.get('tree_id', -1)            else:                tree_id = -1            # takes CONCURRENT_REQUESTS links to process everything            # in parallel            limit = settings.CONCURRENT_REQUESTS            metacrawlers_waiting = MetaCrawler.objects.\                select_related('metacrawler_status', 'metacrawler_categories').\                filter(metacrawler_status__nom='Waiting').\                annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField()                    )                ).\                order_by(                    'is_pw',                    '-metacrawler_categories__level',                    '-date_created')[:limit]            if not metacrawlers_waiting:                return None            # Je passe les metacrawlers que l'on utilise en 'crawling'.            for m in metacrawlers_waiting:                m.metacrawler_status = metacrawler_status_crawling                m.date_launched = timezone.now()                m.save()        return metacrawlers_waiting,V
-        # Test with filters already set,V
-        self.assertEqual(urls[0], return_sample_page_list().url[:-5] + "-lp12-hp15.html"),V
-        self.assertEqual(len(urls), 2),V
-        urls = spider.split_in_half(return_sample_page_list().url[:-5], 12, 15),V
-            - We have a basic category url without filters,V
-        There are multiple cases:,V
-            - We have a filtered category url with lp and hp already set,V
-),v
-,,v
-_no_filter,v
-        self.assertEqual(urls[0], return_sample_page_list_no_filter().url[:-5] + "-lp0-hp1275.html"),V
-],v
-2,v
--,v
-:,v
-[,v
-http://category.dangdang.com/pg1-cp01.01.01.00.00.00.html,v
-products,v
-def return_sample_page_list():    body = open(os.path.join(os.path.dirname(__file__),                             'fixtures/test_dangdang_product_list')).read()    response = HtmlResponse(url='http://category.dangdang.com/pg1-cp01.01.01.00.00.00-lp12-hp15.html',                            status=200, headers=None, body=body, encoding='utf-8')    return response,V
-split_in_half,v
-http://category.dangdang.com/pg1-cp01.01.01.00.00.00-lp12-hp15,v
-    @staticmethod    def get_some_links():        """        Renvoi 50 metacrawlers en 'waiting' et le passe en 'crawling'        :return: Une liste de Metacrawlers.        """        with transaction.atomic():            metacrawler_status_crawling, created = MetaCrawlerStatus.objects.get_or_create(nom='Crawling')            # Je récupère les metacrawlers waiting, avec infos status_id et categorie, order by level DESC pour avoir            # les categories filles avant les mères et donc avoir le niveau le plus            # spécialisé de catégorisation.            # We also must get PW links before anything else.            # we first need to get tree_id for PW            #  -1 is default value if we don't find PW cat            cat_pw = Categorie.objects.filter(name='Policy Warning').values('tree_id').first()            if cat_pw:                tree_id = cat_pw.get('tree_id', -1)            else:                tree_id = -1            # takes CONCURRENT_REQUESTS links to process everything            # in parallel            limit = settings.CONCURRENT_REQUESTS            metacrawlers_waiting = MetaCrawler.objects.\                select_related('metacrawler_status', 'metacrawler_categories').\                filter(metacrawler_status__nom='Waiting').\                annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField()                    )                ).\                order_by(                    'is_pw',                    '-metacrawler_categories__level',                    '-date_created')[:limit]            if not metacrawlers_waiting:                return None            # Je passe les metacrawlers que l'on utilise en 'crawling'.            for m in metacrawlers_waiting:                m.metacrawler_status = metacrawler_status_crawling                m.date_launched = timezone.now()                m.save()        return metacrawlers_waiting,V
-from cia.crawler.crawler.spiders.amazon_spider import get_some_links,V
+" to use fancy symbols for airline, uncomment the following lines and use a" patched font (more info on docs/fancy_symbols.rst)"if !exists('g:airline_symbols')   "let g:airline_symbols = {}"endif"let g:airline_left_sep = '⮀'"let g:airline_left_alt_sep = '⮁'"let g:airline_right_sep = '⮂'"let g:airline_right_alt_sep = '⮃'"let g:airline_symbols.linenr = '⭡',V
+Plug 'itchyny/lightline.vim',V
+https://medium.com/@huntie/10-essential-vim-plugins-for-2018-39957190b7a9,v
+w,v
 e,v
-_,v
-u,v
-v,v
-http://category.dangdang.com/pg1-cp01.01.01.00.00.00-lp12-hp15.html,v
-test_crawler_offline_vue_liste,v
-def return_sample_page_vue_liste():    body = open(os.path.join(os.path.dirname(__file__),                             'fixtures/test_crawler_offline_vue_liste')).read()    response = HtmlResponse(url='http://www.amazon.fr',                            status=200, headers=None, body=body, encoding='utf-8')    return response,V
-, TransactionTestCase,v
-self.,v
-            # takes CONCURRENT_REQUESTS links to process everything            # in parallel            limit = settings.CONCURRENT_REQUESTS            metacrawlers_waiting = MetaCrawler.objects.\                select_related('metacrawler_status', 'metacrawler_categories').\                filter(metacrawler_status__nom='Waiting').\                annotate(                    is_pw=Case(                        When(metacrawler_categories__tree_id=tree_id, then=0),                        default=1,                        output_field=IntegerField()                    )                ).\                order_by(                    'is_pw',                    '-metacrawler_categories__level',                    '-date_created')[:limit]            if not metacrawlers_waiting:                return None            # Je passe les metacrawlers que l'on utilise en 'crawling'.            for m in metacrawlers_waiting:                m.metacrawler_status = metacrawler_status_crawling                m.date_launched = timezone.now()                m.save()        return metacrawlers_waiting,V
-callb,v
-sss,1
-            int(response.css("div.bg_change").xpath(".//div)),V
-                # We have all the products now we have to crawl through them                div_list = response.css("div.shoplist")                product_list = div_list.xpath(".//ul/li")                for product in product_list:                    # TODO get info we can get on product list page                    url = product.xpath("p[contains(@class, 'name')]/a/@href").get()                    yield scrapy.Request(url=url, callback=self.parse_product, dont_filter=True),V
-.format{pg_number = pg_number},v
-                product_linenumber = product.xpath("@class").get(),V
-                product_number = product_linenumber[4:],V
-            with self.settings(LANGUAGE_CODE='EN-en'):,V
-16开,v
-                + "?ajax=1", HTTP_ACCEPT_LANGUAGE='en',V
-HTTP_ACCEPT_LANGUAGE='fr',v
-            self.assertIn("0", days_from_now),V
-    品牌： ONEMORE    型号：11GF810525    热卖： 破洞牛仔裤    裤长： 长裤    裤型： 直筒裤    面料： 全棉牛仔布    腰型： 低腰    厚度： 厚    所属分类：    女士服装>牛仔裤,V
-z,V
-                pass,V
-        highest_product = list_div.xpath(".//li[contains(@class, 'line1')]"),V
-from backoffice import settings,V
-            lp_1 = 0            hp_1 = round(max_price / 2, 0)            lp_2 = hp_1 + 1            hp_2 = max_price            urls = []            url_1 = response.url[:-5] + f"-lp{lp_1}-hp{hp_1}.html"            url_2 = response.url[:-5] + f"-lp{lp_2}-hp{hp_2}.html"            urls.extend(url_1, url_2),V
-                else:,V
-+f"-lp{lp_1}-hp{hp_1}.html",v
-parse_too_many,v
-600,v
 n,v
+_,v
+        {{4/0}},V
+=======            set(story.soyouz_storylog_to_related.all()),            key=lambda elem: elem.date,            reverse=False,        )>>>>>>> 0068cba3f9f26d8cc4dc86b9d41fbece8481004f,V
+        context["log_list"] = sorted(,V
+<<<<<<< HEAD            set(story.soyouz_action_related.all()),  # TODO: remove            key=lambda elem: elem.date_created,  # TODO: remove log_list.html            reverse=False,        )  # TODO: remove log_list_empty.html,V
+https://gitlab.abc-culture.fr/nicolas.baccelli/backoffice/merge_requests/1288/diffs,v
+,V
+    list_thing = list(),V
+            ,2
+            ,2
+..................,3
+d,v
+f,v
+...,v
+for i, name in enumerate(list_name): ...     prod_dict = {name: {"tarif": list_tarif[i], ...                         "fourni": list_fourni[i]}} ...     code_dict.update(prod_dict),v
+code_dict = dict()list_thing = list()list_name = ["name" + str(i) for i in range(0, 20)],V
+-- --- - --- -------------------------------------------------------------- ----,V
+Revert,v
+        achat = Achat.objects.create(            num_commande=self.commande_abc.numero_commande,            prix_achat=135.00,            date_achat="2015-07-22 11:08:36.167938+00:00",            lien="",            carte_bleue=self.carte_bleue_abc,            delais_relance=self.delais_relance_abc,            etat_achat=self.etat_abc,            fournisseur=self.fournisseur_abc,            item=self.item_abc,            num_facture=None,            quantite=1,        )        EnvoiClient.objects.create(            user=self.user, story=self.story_abc, achat_field=achat        ),V
+        achat_commande = self.generate_item(self.commande_abc),V
+, story=self.story_abc, achat_field=achat ,v
+        p,V
+        EnvoiClient.objects.create(            user=self.user, story=self.story_abc, achat_field=achat        ),V
+        with freeze_time(envoi_client_date):            EnvoiClient.objects.create(,V
+        EnvoiClient.objects.create(),V
+EnvoiClient.objects.create(            user=self.user, story=self.story_abc, achat_field=achat        ),v
+    def test_create_feed_file(self):        commands_to_confirm = [self.commande_abc, self.commande_abc2]        message_id_order_id_relation_wanted = {}        for i, v in enumerate(commands_to_confirm, 1):            message_id_order_id_relation_wanted[i] = v        cmd = accept_orders_amazon_cmd()        feedfile, message_id_order_id_relation = cmd.create_feed_file(            self.account, commands_to_confirm        )        self.assertEqual(            message_id_order_id_relation_wanted, message_id_order_id_relation        )        self.assertIn("<AmazonOrderID>115-4935420-6676208</AmazonOrderID>", feedfile)        self.assertIn("<AmazonOrderID>107-4018993-0688228</AmazonOrderID>", feedfile)        self.assertIn(            "<CarrierName>{}</CarrierName>".format(self.postal_carrier.label), feedfile        )        self.assertIn("<MessageID>1</MessageID>", feedfile)        self.assertIn("<MessageID>2</MessageID>", feedfile),V
+            breakpoint(),V
+        employe = ,v
+b,v
+a,v
+        employe_ab = Employe.objects.create(nom="jordan",                                                  prenom="test",,V
+c,v
+.,v
+self,v
+self.user_username_abc,v
+elf.user_username_abc,v
+                                                  departement=self.departement,,V
+                                                  date_modified=None,,V
+        Employe.objects.get_or_create(),V
+ ,v
+,,v
+Actio,v
+filter,v
+ if,v
+            envoi = EnvoiClient.objects.filter(),V
+            if commands_with_tns(command.numero_commande),V
+.filter(achat_id=Achat.objects.filter(commande_id=commande.id)):,v
+sei40kr/fish-ranger-cd,v
+set -g man_blink -o redset -g man_bold -o greenset -g man_standout -b black 93a1a1set -g man_underline -u 93a1a1,v
+                    breakpoint(),V
+langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    plateforme_id=69,    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),v
+5,v
 i,v
+1,v
+langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    plateforme_id=69,    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),V
+                    data["date"] = data["date"].strip().replace("年", "-").replace("月", "-") + "01",V
+add 01 at,v
+                    # TODO: 1st day of the month or last one (28?),V
+False,v
+True,v
+        4/0,V
+scrapydo.run_spider(DangDang, **{"cat_id": 10}),V
+scrapydo.setup(),V
+from cia.crawler.crawler.spiders.dangdang_cat import DangDangimport scrapydo,V
+),v
+process.start(),V
+process.crawl(dangdang_cat.DangDang(cat_id=10)),V
+}),V
+    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',V
+process = CrawlerProcess({,V
+from scrapy.crawler import CrawlerProcess,V
+process = CrawlerProcess({    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'})process.crawl(MySpider)process.start(),v
+                # TODO put DangDang plat id here,V
+langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    plateforme_id=69,    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))MetaCrawler.objects.create(    lien="https://amazon.fr/",    metacrawler_categories=cat_2,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),v
+.strip(),v
+月,v
+年,v
+get,v
+(,v
+t,v
+x,v
+/,v
+        breakpoint(),V
+                    import pdb; pdb.set_trace(),V
+.replace(u'\xa0', u''),v
+世界知识出版社,v
+>,v
+http://search.dangdang.com/?key=%B9%F9%BE%B4%C3%F7&act=input,v
+郭敬明,v
+langue_cn = Langue.objects.get(libelle="CN")Plateforme.objects.create(    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get(name="DangDang")cat_2 = Categorie.objects.get(name="cat_test")MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))MetaCrawler.objects.create(    lien="https://amazon.fr/",    metacrawler_categories=cat_2,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))call_command("crawler", twistedreactor=True),V
+else,v
+            if len(data["code"]):,V
+                data["code"] = data["code"],V

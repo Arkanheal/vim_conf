@@ -39,6 +39,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Override configs by directory
 Plug 'arielrossanigo/dir-configs-override.vim'
 
+" Taskwarrior plugin
+Plug 'xarthurx/vim-taskwarrior'
+
 " LaTeX plugin
 Plug 'lervag/vimtex'
 
@@ -66,8 +69,9 @@ Plug 'vim-scripts/IndexedSearch'
 Plug 'fisadev/fisa-vim-colorscheme'
 
 " Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " Code and files fuzzy finder
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -148,6 +152,10 @@ Plug 'neomake/neomake'
 " to avoid that)
 Plug 'myusuf3/numbers.vim'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Syntax Error highlighting
 "Plug 'vim-syntastic/syntastic'
 
@@ -179,6 +187,9 @@ set guifont=*
 
 " show line numbers
 set nu
+
+" Removing insert because of lightline
+set noshowmode
 
 " remove ugly vertical lines on window division
 set fillchars+=vert:\
@@ -401,16 +412,26 @@ let g:vimtex_compiler_progname = 'nvr'
 
 " vim-polyglot -------------------------
 let g:polyglot_disabled = ['latex']
-" to use fancy symbols for airline, uncomment the following lines and use a
-" patched font (more info on docs/fancy_symbols.rst)
-"if !exists('g:airline_symbols')
-   "let g:airline_symbols = {}
-"endif
-"let g:airline_left_sep = '⮀'
-"let g:airline_left_alt_sep = '⮁'
-"let g:airline_right_sep = '⮂'
-"let g:airline_right_alt_sep = '⮃'
-"let g:airline_symbols.linenr = '⭡'
+
+" ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+
+" Lightline conf
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
+
 
 "" vim-syntastic basic recommended settings TODO: see what can be updated
 "set statusline+=%#warningmsg#
