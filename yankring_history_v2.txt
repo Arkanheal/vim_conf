@@ -1,3 +1,7 @@
+,V
+Plug 'terryma/vim-multiple-cursors',V
+" Multiple cursor test,V
+let,v
 " to use fancy symbols for airline, uncomment the following lines and use a" patched font (more info on docs/fancy_symbols.rst)"if !exists('g:airline_symbols')   "let g:airline_symbols = {}"endif"let g:airline_left_sep = '⮀'"let g:airline_left_alt_sep = '⮁'"let g:airline_right_sep = '⮂'"let g:airline_right_alt_sep = '⮃'"let g:airline_symbols.linenr = '⭡',V
 Plug 'itchyny/lightline.vim',V
 https://medium.com/@huntie/10-essential-vim-plugins-for-2018-39957190b7a9,v
@@ -10,7 +14,6 @@ _,v
         context["log_list"] = sorted(,V
 <<<<<<< HEAD            set(story.soyouz_action_related.all()),  # TODO: remove            key=lambda elem: elem.date_created,  # TODO: remove log_list.html            reverse=False,        )  # TODO: remove log_list_empty.html,V
 https://gitlab.abc-culture.fr/nicolas.baccelli/backoffice/merge_requests/1288/diffs,v
-,V
     list_thing = list(),V
             ,2
             ,2
@@ -95,6 +98,3 @@ x,v
 http://search.dangdang.com/?key=%B9%F9%BE%B4%C3%F7&act=input,v
 郭敬明,v
 langue_cn = Langue.objects.get(libelle="CN")Plateforme.objects.create(    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get(name="DangDang")cat_2 = Categorie.objects.get(name="cat_test")MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))MetaCrawler.objects.create(    lien="https://amazon.fr/",    metacrawler_categories=cat_2,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))call_command("crawler", twistedreactor=True),V
-else,v
-            if len(data["code"]):,V
-                data["code"] = data["code"],V
