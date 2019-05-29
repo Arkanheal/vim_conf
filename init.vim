@@ -68,15 +68,10 @@ Plug 'vim-scripts/IndexedSearch'
 " Terminal Vim with 256 colors colorscheme
 Plug 'fisadev/fisa-vim-colorscheme'
 
-" Airline
+" Lightline
 Plug 'itchyny/lightline.vim'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 
 " Code and files fuzzy finder
-" Plug 'ctrlpvim/ctrlp.vim'
-" Extension to ctrlp, for fuzzy command finder
-" Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -84,11 +79,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'fisadev/FixedTaskList.vim'
 
 " Async autocompletion
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Completion from other opened files
 Plug 'Shougo/context_filetype.vim'
 " Python autocompletion
-"Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
 " Just to add the python go-to-definition and similar features, autocompletion
 " from this plugin is disabled
 Plug 'davidhalter/jedi-vim'
@@ -119,14 +112,8 @@ Plug 'lilydjwg/colorizer'
 " Window chooser
 Plug 't9md/vim-choosewin'
 
-" Automatically sort python imports
-"Plug 'fisadev/vim-isort'
-
 " Async linter
 Plug 'w0rp/ale'
-
-" Highlight matching html tags
-"Plug 'valloric/MatchTagAlways'
 
 " Generate html in a simple way
 Plug 'mattn/emmet-vim'
@@ -140,11 +127,6 @@ Plug 'mhinz/vim-signify'
 " Yank history navigation
 Plug 'vim-scripts/YankRing.vim'
 
-" Linters
-Plug 'neomake/neomake'
-" TODO is it running on save? or when?
-" TODO not detecting errors, just style, is it using pylint?
-
 " Relative numbering of lines (0 is the current line)
 " (disabled by default because is very intrusive and can't be easily toggled
 " on/off. When the plugin is present, will always activate the relative
@@ -155,9 +137,6 @@ Plug 'myusuf3/numbers.vim'
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" Syntax Error highlighting
-"Plug 'vim-syntastic/syntastic'
 
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
@@ -281,25 +260,14 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " show pending tasks list
 map <F2> :TaskList<CR>
 
-" Neomake ------------------------------
-
-" Run linter on write
-" autocmd! BufWritePost * Neomake
-
-" Check code as python3 by default
-"let g:neomake_python_python_maker = neomake#makers#ft#python#python()
-"let g:neomake_python_flake8_maker = neomake#makers#ft#python#flake8()
-"let g:neomake_python_python_maker.exe = 'python3 -m py_compile'
-"let g:neomake_python_flake8_maker.exe = 'python3 -m flake8'
-
 " Fzf ------------------------------
 
 " file finder mapping
 nmap ,e :Files<CR>
+" Buffer finder mapping
+nmap ,E :Buffers<CR>
 " tags (symbols) in current file finder mapping
 nmap ,g :BTag<CR>
-" tags (symbols) in all files finder mapping
-nmap ,G :Tag<CR>
 " general code finder in current file mapping
 nmap ,f :BLines<CR>
 " general code finder in all files mapping
@@ -309,32 +277,6 @@ nmap ,C :Ag<CR>
 " commands finder mapping
 nmap ,c :Commands<CR>
 nnoremap <C-k> :History<cr>
-
-" to be able to call CtrlP with default search text
-"function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-    "execute ':CtrlP' . a:ctrlp_command_end
-    "call feedkeys(a:search_text)
-"endfunction
-" same as previous mappings, but calling with current word as default text
-"nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-"nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
-"nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-"nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-"nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-"nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
-"nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
-
-
-" Deoplete -----------------------------
-
-"" Use deoplete.
-
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#enable_ignore_case = 1
-"let g:deoplete#enable_smart_case = 1
-" complete with words from any opened file
-" let g:context_filetype#same_filetypes = {}
-" let g:context_filetype#same_filetypes._ = '_'
 
 " Jedi-vim ------------------------------
 
@@ -398,12 +340,6 @@ let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
 let g:yankring_clipboard_monitor = 0
 let g:yankring_history_dir = '~/.config/nvim/'
 
-" Airline ------------------------------
-
-let g:airline_powerline_fonts = 0
-let g:airline_theme = 'bubblegum'
-let g:airline#extensions#whitespace#enabled = 0
-
 " Folds --------------------------------
 autocmd FileType python,coffee BracelessEnable +indent +fold
 
@@ -431,14 +367,3 @@ let g:lightline = {
     \   'gitbranch': 'fugitive#head'
     \ },
     \ }
-
-
-"" vim-syntastic basic recommended settings TODO: see what can be updated
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-""let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0

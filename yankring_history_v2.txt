@@ -1,4 +1,26 @@
+" tags (symbols) in all files finder mapping,V
+nmap ,T :Tag<CR>,V
 ,V
+"Plug 'vim-syntastic/syntastic',V
+" Syntax Error highlighting,V
+" TODO not detecting errors, just style, is it using pylint?,V
+" TODO is it running on save? or when?,V
+Plug 'neomake/neomake',V
+" Linters,V
+"Plug 'valloric/MatchTagAlways',V
+" Highlight matching html tags,V
+" Automatically sort python imports,V
+"Plug 'fisadev/vim-isort',V
+"Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' },V
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' },V
+" Plug 'fisadev/vim-ctrlp-cmdpalette',V
+" Extension to ctrlp, for fuzzy command finder,V
+" Plug 'ctrlpvim/ctrlp.vim',V
+"Plug 'vim-airline/vim-airline',V
+"Plug 'vim-airline/vim-airline-themes',V
+"" Airline ------------------------------,V
+,V
+nmap ,e :Files<CR>,V
 Plug 'terryma/vim-multiple-cursors',V
 " Multiple cursor test,V
 let,v
@@ -76,25 +98,3 @@ from cia.crawler.crawler.spiders.dangdang_cat import DangDangimport scrapydo,V
 process.start(),V
 process.crawl(dangdang_cat.DangDang(cat_id=10)),V
 }),V
-    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',V
-process = CrawlerProcess({,V
-from scrapy.crawler import CrawlerProcess,V
-process = CrawlerProcess({    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'})process.crawl(MySpider)process.start(),v
-                # TODO put DangDang plat id here,V
-langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    plateforme_id=69,    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))MetaCrawler.objects.create(    lien="https://amazon.fr/",    metacrawler_categories=cat_2,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),v
-.strip(),v
-月,v
-年,v
-get,v
-(,v
-t,v
-x,v
-/,v
-        breakpoint(),V
-                    import pdb; pdb.set_trace(),V
-.replace(u'\xa0', u''),v
-世界知识出版社,v
->,v
-http://search.dangdang.com/?key=%B9%F9%BE%B4%C3%F7&act=input,v
-郭敬明,v
-langue_cn = Langue.objects.get(libelle="CN")Plateforme.objects.create(    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get(name="DangDang")cat_2 = Categorie.objects.get(name="cat_test")MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))MetaCrawler.objects.create(    lien="https://amazon.fr/",    metacrawler_categories=cat_2,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting"))call_command("crawler", twistedreactor=True),V
