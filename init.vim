@@ -42,6 +42,9 @@ Plug 'arielrossanigo/dir-configs-override.vim'
 " Taskwarrior plugin
 Plug 'xarthurx/vim-taskwarrior'
 
+" Vim dwm
+Plug 'spolu/dwm.vim'
+
 " LaTeX plugin
 Plug 'lervag/vimtex'
 
@@ -138,6 +141,9 @@ Plug 'myusuf3/numbers.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" devicons
+Plug 'ryanoasis/vim-devicons'
+
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
 
@@ -159,7 +165,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-set guifont=*
+set encoding=UTF-8
 
 " Remap Esc to leave terminal mode
 :tnoremap <Esc> <C-\><C-n>

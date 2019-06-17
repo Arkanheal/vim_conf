@@ -1,100 +1,100 @@
-" tags (symbols) in all files finder mapping,V
-nmap ,T :Tag<CR>,V
+produit_update,v
+ProduitUpdate,v
+UpdateProduitForm,v
+m,v
++--------------+-----------+-------------------------------+-------------------+| product_id   | deleted   | start_date                    | duration          ||--------------+-----------+-------------------------------+-------------------|| 117308122    | 0         | 2019-03-20 00:51:17.934737+00 | 90 days, 0:00:00  || 26177161     | 0         | 2019-03-22 05:59:01.281282+00 | 90 days, 0:00:00  || 78455251     | 0         | 2019-03-31 23:19:52.477959+00 | 90 days, 0:00:00  || 43635647     | 0         | 2019-04-17 12:58:02.502692+00 | 90 days, 0:00:00  || 126909420    | 0         | 2019-04-25 10:36:12.279536+00 | 360 days, 0:00:00 || 58383268     | 0         | 2019-04-30 14:24:51.24867+00  | 90 days, 0:00:00  || 59547254     | 0         | 2019-05-13 04:36:40.158048+00 | 90 days, 0:00:00  || 40706900     | 0         | 2019-05-13 23:53:02.202862+00 | 90 days, 0:00:00  || 72902223     | 0         | 2019-05-16 23:48:43.691363+00 | 90 days, 0:00:00  || 45791855     | 0         | 2019-05-20 01:47:24.737777+00 | 90 days, 0:00:00  || 26175513     | 0         | 2019-05-20 11:34:06.824564+00 | 90 days, 0:00:00  || 71299817     | 0         | 2019-05-22 01:17:09.717704+00 | 90 days, 0:00:00  || 58406295     | 0         | 2019-05-24 08:03:42.391178+00 | 90 days, 0:00:00  || 116038940    | 0         | 2019-05-29 02:19:38.08562+00  | 30 days, 0:00:00  || 72497512     | 0         | 2019-06-03 00:06:33.804433+00 | 90 days, 0:00:00  || 78313873     | 0         | 2019-06-03 04:21:27.50683+00  | 90 days, 0:00:00  || 65457056     | 0         | 2019-06-03 12:37:34.475148+00 | 90 days, 0:00:00  || 124697658    | 0         | 2019-06-03 14:33:33.883264+00 | 90 days, 0:00:00  || 85340009     | 0         | 2019-06-03 15:22:35.41279+00  | 90 days, 0:00:00  || 123233368    | 0         | 2019-06-05 03:43:56.953529+00 | 90 days, 0:00:00  || 116777326    | 0         | 2019-06-11 00:03:45.10234+00  | 90 days, 0:00:00  || 119865440    | 0         | 2019-06-11 00:15:17.18881+00  | 90 days, 0:00:00  || 134282455    | 0         | 2019-06-12 00:21:50.836025+00 | 360 days, 0:00:00 || 116989913    | 0         | 2019-06-13 03:01:05.880944+00 | 90 days, 0:00:00  || 78660856     | 0         | 2019-06-13 09:16:43.447766+00 | 180 days, 0:00:00 || 133738072    | 0         | 2019-06-14 01:01:03.417448+00 | 360 days, 0:00:00 || 43249725     | 0         | 2019-06-16 23:36:15.197349+00 | 360 days, 0:00:00 || 58335486     | 0         | 2019-06-17 04:41:01.640155+00 | 90 days, 0:00:00  || 58349651     | 0         | 2019-06-17 04:50:25.348652+00 | 90 days, 0:00:00  || 67077054     | 0         | 2019-06-17 05:21:24.022354+00 | 360 days, 0:00:00 |+--------------+-----------+-------------------------------+-------------------+,V
+Produit.objects.filter(            # quarantine duration < duration between start_date and today:            adminpricing_produitquarantined_related__duration__lt=(                now() - F('adminpricing_produitquarantined_related__start_date')            ),            deleted=1,        ),v
+langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    nom_plateforme="dangdang.com",    actif=1,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.41.57.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),v
 ,V
-"Plug 'vim-syntastic/syntastic',V
-" Syntax Error highlighting,V
-" TODO not detecting errors, just style, is it using pylint?,V
-" TODO is it running on save? or when?,V
-Plug 'neomake/neomake',V
-" Linters,V
-"Plug 'valloric/MatchTagAlways',V
-" Highlight matching html tags,V
-" Automatically sort python imports,V
-"Plug 'fisadev/vim-isort',V
-"Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' },V
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' },V
-" Plug 'fisadev/vim-ctrlp-cmdpalette',V
-" Extension to ctrlp, for fuzzy command finder,V
-" Plug 'ctrlpvim/ctrlp.vim',V
-"Plug 'vim-airline/vim-airline',V
-"Plug 'vim-airline/vim-airline-themes',V
-"" Airline ------------------------------,V
-,V
-nmap ,e :Files<CR>,V
-Plug 'terryma/vim-multiple-cursors',V
-" Multiple cursor test,V
-let,v
-" to use fancy symbols for airline, uncomment the following lines and use a" patched font (more info on docs/fancy_symbols.rst)"if !exists('g:airline_symbols')   "let g:airline_symbols = {}"endif"let g:airline_left_sep = '⮀'"let g:airline_left_alt_sep = '⮁'"let g:airline_right_sep = '⮂'"let g:airline_right_alt_sep = '⮃'"let g:airline_symbols.linenr = '⭡',V
-Plug 'itchyny/lightline.vim',V
-https://medium.com/@huntie/10-essential-vim-plugins-for-2018-39957190b7a9,v
-w,v
-e,v
-n,v
+" Buffer Plugin,V
+Plug 'bagrat/vim-buffet',V
+let g:buffet_powerline_separators = 1let g:buffet_use_devicons = 1let g:buffet_separator = "|",v
+CreateProduitQuarantinedForm,v
+produit_quarantined_form_class,v
+products put into quarantine:,v
+5b1356cff,v
+ProduitQuarantined.objects.create,v
+        for duplicate in duplicate_products:,V
+roduit_quarantined_created_post_save(sender, instance, created, **kwargs):,v
+usr/bin/env python3,v
+#!/usr/bin/env python3,V
+#!/usr/bin/env python3# Copyright 2018-2019 Jay Kamat <jaygkamat@gmail.com>## This file is part of qutebrowser.## qutebrowser is free software: you can redistribute it and/or modify# it under the terms of the GNU General Public License as published by# the Free Software Foundation, either version 3 of the License, or# (at your option) any later version.## qutebrowser is distributed in the hope that it will be useful,# but WITHOUT ANY WARRANTY; without even the implied warranty of# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the# GNU General Public License for more details.## You should have received a copy of the GNU General Public License# along with qutebrowser.  If not, see <http://www.gnu.org/licenses/>."""This userscript allows for insertion of usernames and passwords from keepassdatabases using pykeepass. Since it is a userscript, it must be run fromqutebrowser.A sample invocation of this script is::spawn --userscript qute-keepass -p ~/KeePassFiles/MainDatabase.kdbxAnd a sample binding:bind --mode=insert <ctrl-i> spawn --userscript qute-keepass -p ~/KeePassFiles/MainDatabase.kdbx-p or --path is a required argument.--keyfile-path allows you to specify a keepass keyfile. If you only use akeyfile, also add --no-password as well. Specifying --no-password without--keyfile-path will lead to an error.login information is inserted using :insert-text and :fake-key <Tab>, whichmeans you must have a cursor in position before initiating this userscript. Ifyou do not do this, you will get 'element not editable' errors.If keepass takes a while to open the DB, you might want to consider reducingthe number of transform rounds in your database settings.Dependencies: pykeepass (in python3), PyQt5. Without pykeepass, you will get anexit code of 100.********************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!******************WARNING: The login details are viewable as plaintext in qutebrowser's debug log(qute://log) and could be compromised if you decide to submit a crash report!********************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!******************"""# pylint: disable=bad-builtinimport argparseimport enumimport functoolsimport osimport shleximport subprocessimport sysfrom PyQt5.QtCore import QUrlfrom PyQt5.QtWidgets import QApplication, QInputDialog, QLineEdittry:    import pykeepassexcept ImportError as e:    print("pykeepass not found: {}".format(str(e)), file=sys.stderr)    # Since this is a common error, try to print it to the FIFO if we can.    if 'QUTE_FIFO' in os.environ:        with open(os.environ['QUTE_FIFO'], 'w') as fifo:            fifo.write('message-error "pykeepass failed to be imported."\n')            fifo.flush()    sys.exit(100)argument_parser = argparse.ArgumentParser(    description="Fill passwords using keepass.",    formatter_class=argparse.RawDescriptionHelpFormatter,    epilog=__doc__)argument_parser.add_argument('url', nargs='?', default=os.getenv('QUTE_URL'))argument_parser.add_argument('--path', '-p', required=True,                             help='Path to the keepass db.')argument_parser.add_argument('--keyfile-path', '-k', default=None,                             help='Path to a keepass keyfile')argument_parser.add_argument(    '--no-password', action='store_true',    help='Supply if no password is required to unlock this database. '    'Only allowed with --keyfile-path')argument_parser.add_argument(    '--dmenu-invocation', '-d', default='dmenu',    help='Invocation used to execute a dmenu-provider')argument_parser.add_argument(    '--dmenu-format', '-f', default='{title}: {username}',    help='Format string for keys to display in dmenu.'    ' Must generate a unique string.')argument_parser.add_argument(    '--no-insert-mode', '-n', dest='insert_mode', action='store_false',    help="Don't automatically enter insert mode")argument_parser.add_argument(    '--io-encoding', '-i', default='UTF-8',    help='Encoding used to communicate with subprocesses')group = argument_parser.add_mutually_exclusive_group()group.add_argument('--username-fill-only', '-e',                   action='store_true', help='Only insert username')group.add_argument('--password-fill-only', '-w',                   action='store_true', help='Only insert password')CMD_DELAY = 50class ExitCodes(enum.IntEnum):    """Stores various exit codes groups to use."""    SUCCESS = 0    FAILURE = 1    # 1 is automatically used if Python throws an exception    NO_CANDIDATES = 2    USER_QUIT = 3    DB_OPEN_FAIL = 4    INTERNAL_ERROR = 10def qute_command(command):    with open(os.environ['QUTE_FIFO'], 'w') as fifo:        fifo.write(command + '\n')        fifo.flush()def stderr(to_print):    """Extra functionality to echo out errors to qb ui."""    print(to_print, file=sys.stderr)    qute_command('message-error "{}"'.format(to_print))def dmenu(items, invocation, encoding):    """Runs dmenu with given arguments."""    command = shlex.split(invocation)    process = subprocess.run(command, input='\n'.join(items).encode(encoding),                             stdout=subprocess.PIPE)    return process.stdout.decode(encoding).strip()def get_password():    """Get a keepass db password from user."""    _app = QApplication(sys.argv)  # don't remove this local variable    text, ok = QInputDialog.getText(        None, "KeePass DB Password",        "Please enter your KeePass Master Password",        QLineEdit.Password)    if not ok:        stderr('Password Prompt Rejected.')        sys.exit(ExitCodes.USER_QUIT)    return textdef find_candidates(args, host):    """Finds candidates that match host"""    file_path = os.path.expanduser(args.path)    # TODO find a way to keep the db open, so we don't open (and query    # password) it every time    pw = None    if not args.no_password:        pw = get_password()    kf = args.keyfile_path    if kf:        kf = os.path.expanduser(kf)    try:        kp = pykeepass.PyKeePass(file_path, password=pw, keyfile=kf)    except Exception as e:        stderr("There was an error opening the DB: {}".format(str(e)))    return kp.find_entries(url="{}{}{}".format(".*", host, ".*"), regex=True)def candidate_to_str(args, candidate):    """Turns candidate into a human readable string for dmenu"""    return args.dmenu_format.format(title=candidate.title,                                    url=candidate.url,                                    username=candidate.username,                                    path=candidate.path,                                    uuid=candidate.uuid)def candidate_to_secret(candidate):    """Turns candidate into a generic (user, password) tuple"""    return (candidate.username, candidate.password)def run(args):    """Runs qute-keepass"""    if not args.url:        argument_parser.print_help()        return ExitCodes.FAILURE    url_host = QUrl(args.url).host()    if not url_host:        stderr('{} was not parsed as a valid URL!'.format(args.url))        return ExitCodes.INTERNAL_ERROR    # Find candidates matching the host of the given URL    candidates = find_candidates(args, url_host)    if not candidates:        stderr('No candidates for URL {!r} found!'.format(args.url))        return ExitCodes.NO_CANDIDATES    # Create a map so we can get turn the resulting string from dmenu back into    # a candidate    candidates_strs = list(map(functools.partial(candidate_to_str, args),                               candidates))    candidates_map = dict(zip(candidates_strs, candidates))    if len(candidates) == 1:        selection = candidates.pop()    else:        selection = dmenu(candidates_strs,                          args.dmenu_invocation,                          args.io_encoding)        if selection not in candidates_map:            stderr("'{}' was not a valid entry!").format(selection)            return ExitCodes.USER_QUIT        selection = candidates_map[selection]    username, password = candidate_to_secret(selection)    insert_mode = ';; enter-mode insert' if args.insert_mode else ''    if args.username_fill_only:        qute_command('insert-text {}{}'.format(username, insert_mode))    elif args.password_fill_only:        qute_command('insert-text {}{}'.format(password, insert_mode))    else:        # Enter username and password using insert-key and fake-key <Tab>        # (which supports more passwords than fake-key only), then switch back        # into insert-mode, so the form can be directly submitted by hitting        # enter afterwards. It dosen't matter when we go into insert mode, but        # the other commands need to be be executed sequentially, so we add        # delays with later.        qute_command('insert-text {} ;;'                     'later {} fake-key <Tab> ;;'                     'later {} insert-text {}{}'                     .format(username, CMD_DELAY,                             CMD_DELAY * 2, password, insert_mode))    return ExitCodes.SUCCESSif __name__ == '__main__':    arguments = argument_parser.parse_args()    sys.exit(run(arguments)),v
+                breakpoint(),V
+        breakpoint(),V
+DEBUG,v
+    if settings.DEBUG:,V
+        return list(set(links)),V
+def return_sample_page_503(metacrawler):    body = open(        os.path.join(os.path.dirname(__file__), "fixtures/test_dangdang_product_503")    ).read()    request = Request(url=metacrawler.lien)    request.meta["metacrawler"] = metacrawler    response = HtmlResponse(        url="http://static.dangdang.com/503error/error.html",        status=200,        headers=None,        body=body,        encoding="utf-8",        request=request,    )    return response,V
+from django.db.models import Q,V
+import os,V
+from django.utils.encoding import smart_bytes,V
+, smart_bytes(return_pdf_for_item(item)),v
+.tobytes(),v
 _,v
-        {{4/0}},V
-=======            set(story.soyouz_storylog_to_related.all()),            key=lambda elem: elem.date,            reverse=False,        )>>>>>>> 0068cba3f9f26d8cc4dc86b9d41fbece8481004f,V
-        context["log_list"] = sorted(,V
-<<<<<<< HEAD            set(story.soyouz_action_related.all()),  # TODO: remove            key=lambda elem: elem.date_created,  # TODO: remove log_list.html            reverse=False,        )  # TODO: remove log_list_empty.html,V
-https://gitlab.abc-culture.fr/nicolas.baccelli/backoffice/merge_requests/1288/diffs,v
-    list_thing = list(),V
-            ,2
-            ,2
-..................,3
-d,v
-f,v
-...,v
-for i, name in enumerate(list_name): ...     prod_dict = {name: {"tarif": list_tarif[i], ...                         "fourni": list_fourni[i]}} ...     code_dict.update(prod_dict),v
-code_dict = dict()list_thing = list()list_name = ["name" + str(i) for i in range(0, 20)],V
--- --- - --- -------------------------------------------------------------- ----,V
-Revert,v
-        achat = Achat.objects.create(            num_commande=self.commande_abc.numero_commande,            prix_achat=135.00,            date_achat="2015-07-22 11:08:36.167938+00:00",            lien="",            carte_bleue=self.carte_bleue_abc,            delais_relance=self.delais_relance_abc,            etat_achat=self.etat_abc,            fournisseur=self.fournisseur_abc,            item=self.item_abc,            num_facture=None,            quantite=1,        )        EnvoiClient.objects.create(            user=self.user, story=self.story_abc, achat_field=achat        ),V
-        achat_commande = self.generate_item(self.commande_abc),V
-, story=self.story_abc, achat_field=achat ,v
-        p,V
-        EnvoiClient.objects.create(            user=self.user, story=self.story_abc, achat_field=achat        ),V
-        with freeze_time(envoi_client_date):            EnvoiClient.objects.create(,V
-        EnvoiClient.objects.create(),V
-EnvoiClient.objects.create(            user=self.user, story=self.story_abc, achat_field=achat        ),v
-    def test_create_feed_file(self):        commands_to_confirm = [self.commande_abc, self.commande_abc2]        message_id_order_id_relation_wanted = {}        for i, v in enumerate(commands_to_confirm, 1):            message_id_order_id_relation_wanted[i] = v        cmd = accept_orders_amazon_cmd()        feedfile, message_id_order_id_relation = cmd.create_feed_file(            self.account, commands_to_confirm        )        self.assertEqual(            message_id_order_id_relation_wanted, message_id_order_id_relation        )        self.assertIn("<AmazonOrderID>115-4935420-6676208</AmazonOrderID>", feedfile)        self.assertIn("<AmazonOrderID>107-4018993-0688228</AmazonOrderID>", feedfile)        self.assertIn(            "<CarrierName>{}</CarrierName>".format(self.postal_carrier.label), feedfile        )        self.assertIn("<MessageID>1</MessageID>", feedfile)        self.assertIn("<MessageID>2</MessageID>", feedfile),V
-            breakpoint(),V
-        employe = ,v
-b,v
+random_item_pdf,v
+# Python imports,v
+    ,V
+    body = open(        os.path.join(os.path.dirname(__file__), "fixtures/test_dangdang_product_list")    ).read(),V
+x,v
+        self.assertEqual(attachment.message, Message.objects.last()),V
+self.story_attachment.commande.soyouz_item_related.,v
+self.story_attachment.,v
+        # We also need 2 items linked with a command and a story,V
+item,v
+=,v
+e,v
 a,v
-        employe_ab = Employe.objects.create(nom="jordan",                                                  prenom="test",,V
-c,v
-.,v
-self,v
-self.user_username_abc,v
-elf.user_username_abc,v
-                                                  departement=self.departement,,V
-                                                  date_modified=None,,V
-        Employe.objects.get_or_create(),V
+n,v
+len(MessagePj.objects.all(),v
+        attachements = MessagePj.objects.filter(Q(libelle_pj='test2.png') | Q(libelle_pj='test1.png')),V
+response,v
+            breakpoint(),V
+],v
+[,v
+_abc.id,v
+            'files': files,,V
+        post_data = {            'body': 'Test de message',            'story': self.story_abc.id,            'commentaire_message': '',            'a_to': 'merch.service05@amazon.com',            'a_from': self.abc_email.email,            'submit': 'Envoyer',            'societe': self.societe_abc.societe_id,            'message_type': '-1',            'subject': 'Re : RE:[CASE 1685486641] Return policies information needed',            'files': files,        }        qdata = QueryDict("", mutable=True)        qdata.update(post_data)        msg = Message.objects.count()        response = self.client.post(reverse('soyouz:message_create'), qdata, follow=True)        self.assertEqual(response.status_code, 200)        attachements = MessagePj.objects.filter(Q(libelle_pj='test2.png') | Q(libelle_pj='test1.png')),V
+    """Docstring for TestBillAttachment. """,V
+object,v
+MyClass,v
+KIzZoZ74Nd,v
+langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    nom_plateforme="dangdang.com",    actif=1,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.41.57.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),V
+-- --- - ------------------- --- ------------------------------------------ ----,V
+from django.utils import datastructures,V
  ,v
-,,v
-Actio,v
-filter,v
- if,v
-            envoi = EnvoiClient.objects.filter(),V
-            if commands_with_tns(command.numero_commande),V
-.filter(achat_id=Achat.objects.filter(commande_id=commande.id)):,v
-sei40kr/fish-ranger-cd,v
-set -g man_blink -o redset -g man_bold -o greenset -g man_standout -b black 93a1a1set -g man_underline -u 93a1a1,v
-                    breakpoint(),V
-langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    plateforme_id=69,    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),v
-5,v
+                4/0,V
+each,v
+g,v
 i,v
-1,v
-langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    plateforme_id=69,    nom_plateforme="DangDang",    actif=1,    marketplace_id=78,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.01.13.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),V
-                    data["date"] = data["date"].strip().replace("年", "-").replace("月", "-") + "01",V
-add 01 at,v
-                    # TODO: 1st day of the month or last one (28?),V
-False,v
-True,v
-        4/0,V
-scrapydo.run_spider(DangDang, **{"cat_id": 10}),V
-scrapydo.setup(),V
-from cia.crawler.crawler.spiders.dangdang_cat import DangDangimport scrapydo,V
+attachements,v
+0,v
+c,v
+t,v
+s,v
+.,v
+f,v
+l,v
+p,v
+y,v
+o,v
+h,v
 ),v
-process.start(),V
-process.crawl(dangdang_cat.DangDang(cat_id=10)),V
-}),V
+uploaded_files,v
+    def save_attachements(self):        if self.cleaned_data.get("uploaded_files"):            for each in self.cleaned_data.get("uploaded_files"):                messagepj = MessagePj(                    file_content=each.read(),                    libelle_pj=each.name,                    mimetype=each.content_type,                    message=self.instance,                )                messagepj.save(),V
+                form.cleaned_data.setdefault("uploaded_files", []).append(pdf),V
+AttributeError: 'bytes' object has no attribute 'read',v
+                    file_content=each.read(),,V
+lafoiratout,v
+                request.FILES.append(pdf),V
+MultiValueDict,v
+            # We get the checked add_bill field            include_billing = form.cleaned_data["include_billing"]            for sku in include_billing:                item = Item.objects.get(sku=sku)                billing_context = BillingView.as_view()(request, item=item)                pdf = PDFResponse(                    request=request,                    template=billing_context.template_name,                    context=billing_context.context_data,                    sanitize=False,                ).rendered_content,V
+pdf,v
+                # form.cleaned_data.setdefault("uploaded_files", []).append(wrapper_file),V
+                wrapper_file = UploadedFile(x, name="Bill for '%s'" % item.titre, content_type="application/pdf", charset="utf-8"),V
+(,v
+class PDFResponse(TemplateResponse):,V
+.__sizeof__(),v
+size_of,v
+    InlineCheckboxes,,V
+InlineCheckboxes,v
+        926: "Rendre la liste de emails dynamique dans crmEmail",,V
