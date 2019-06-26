@@ -42,6 +42,9 @@ Plug 'arielrossanigo/dir-configs-override.vim'
 " Taskwarrior plugin
 Plug 'xarthurx/vim-taskwarrior'
 
+" Markdown preview
+Plug 'JamshedVesuna/vim-markdown-preview'
+
 " Vim dwm
 Plug 'spolu/dwm.vim'
 
@@ -91,6 +94,9 @@ Plug 'davidhalter/jedi-vim'
 
 " Automatically close parenthesis, etc
 Plug 'Townk/vim-autoclose'
+
+" Tag gesiton
+Plug 'craigemery/vim-autotag'
 
 " Surround
 Plug 'tpope/vim-surround'
@@ -205,8 +211,11 @@ set cursorline
 highlight CursorLine ctermbg=240
 
 " max line length
-set colorcolumn=120
-highlight ColorColumn ctermbg=16
+set colorcolumn=120,100,80
+highlight ColorColumn ctermbg=233
+
+" Change highlight color
+hi Search cterm=None ctermfg=white ctermbg=black
 
 " needed so deoplete can auto select the first suggestion
 set completeopt+=noinsert
@@ -274,6 +283,7 @@ nmap ,e :Files<CR>
 nmap ,E :Buffers<CR>
 " tags (symbols) in current file finder mapping
 nmap ,g :BTag<CR>
+nmap ,G :Tags<CR>
 " general code finder in current file mapping
 nmap ,f :BLines<CR>
 " general code finder in all files mapping
@@ -283,6 +293,24 @@ nmap ,C :Ag<CR>
 " commands finder mapping
 nmap ,c :Commands<CR>
 nnoremap <C-k> :History<cr>
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+let g:fzf_tags_command = 'ctags -R'
 
 " Jedi-vim ------------------------------
 
@@ -354,6 +382,9 @@ let g:vimtex_compiler_progname = 'nvr'
 
 " vim-polyglot -------------------------
 let g:polyglot_disabled = ['latex']
+
+" Markdown preview
+let vim_markdown_preview_github=1
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.

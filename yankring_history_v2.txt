@@ -1,100 +1,100 @@
-produit_update,v
-ProduitUpdate,v
-UpdateProduitForm,v
-m,v
-+--------------+-----------+-------------------------------+-------------------+| product_id   | deleted   | start_date                    | duration          ||--------------+-----------+-------------------------------+-------------------|| 117308122    | 0         | 2019-03-20 00:51:17.934737+00 | 90 days, 0:00:00  || 26177161     | 0         | 2019-03-22 05:59:01.281282+00 | 90 days, 0:00:00  || 78455251     | 0         | 2019-03-31 23:19:52.477959+00 | 90 days, 0:00:00  || 43635647     | 0         | 2019-04-17 12:58:02.502692+00 | 90 days, 0:00:00  || 126909420    | 0         | 2019-04-25 10:36:12.279536+00 | 360 days, 0:00:00 || 58383268     | 0         | 2019-04-30 14:24:51.24867+00  | 90 days, 0:00:00  || 59547254     | 0         | 2019-05-13 04:36:40.158048+00 | 90 days, 0:00:00  || 40706900     | 0         | 2019-05-13 23:53:02.202862+00 | 90 days, 0:00:00  || 72902223     | 0         | 2019-05-16 23:48:43.691363+00 | 90 days, 0:00:00  || 45791855     | 0         | 2019-05-20 01:47:24.737777+00 | 90 days, 0:00:00  || 26175513     | 0         | 2019-05-20 11:34:06.824564+00 | 90 days, 0:00:00  || 71299817     | 0         | 2019-05-22 01:17:09.717704+00 | 90 days, 0:00:00  || 58406295     | 0         | 2019-05-24 08:03:42.391178+00 | 90 days, 0:00:00  || 116038940    | 0         | 2019-05-29 02:19:38.08562+00  | 30 days, 0:00:00  || 72497512     | 0         | 2019-06-03 00:06:33.804433+00 | 90 days, 0:00:00  || 78313873     | 0         | 2019-06-03 04:21:27.50683+00  | 90 days, 0:00:00  || 65457056     | 0         | 2019-06-03 12:37:34.475148+00 | 90 days, 0:00:00  || 124697658    | 0         | 2019-06-03 14:33:33.883264+00 | 90 days, 0:00:00  || 85340009     | 0         | 2019-06-03 15:22:35.41279+00  | 90 days, 0:00:00  || 123233368    | 0         | 2019-06-05 03:43:56.953529+00 | 90 days, 0:00:00  || 116777326    | 0         | 2019-06-11 00:03:45.10234+00  | 90 days, 0:00:00  || 119865440    | 0         | 2019-06-11 00:15:17.18881+00  | 90 days, 0:00:00  || 134282455    | 0         | 2019-06-12 00:21:50.836025+00 | 360 days, 0:00:00 || 116989913    | 0         | 2019-06-13 03:01:05.880944+00 | 90 days, 0:00:00  || 78660856     | 0         | 2019-06-13 09:16:43.447766+00 | 180 days, 0:00:00 || 133738072    | 0         | 2019-06-14 01:01:03.417448+00 | 360 days, 0:00:00 || 43249725     | 0         | 2019-06-16 23:36:15.197349+00 | 360 days, 0:00:00 || 58335486     | 0         | 2019-06-17 04:41:01.640155+00 | 90 days, 0:00:00  || 58349651     | 0         | 2019-06-17 04:50:25.348652+00 | 90 days, 0:00:00  || 67077054     | 0         | 2019-06-17 05:21:24.022354+00 | 360 days, 0:00:00 |+--------------+-----------+-------------------------------+-------------------+,V
-Produit.objects.filter(            # quarantine duration < duration between start_date and today:            adminpricing_produitquarantined_related__duration__lt=(                now() - F('adminpricing_produitquarantined_related__start_date')            ),            deleted=1,        ),v
-langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    nom_plateforme="dangdang.com",    actif=1,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.41.57.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),v
-,V
-" Buffer Plugin,V
-Plug 'bagrat/vim-buffet',V
-let g:buffet_powerline_separators = 1let g:buffet_use_devicons = 1let g:buffet_separator = "|",v
-CreateProduitQuarantinedForm,v
-produit_quarantined_form_class,v
-products put into quarantine:,v
-5b1356cff,v
-ProduitQuarantined.objects.create,v
-        for duplicate in duplicate_products:,V
-roduit_quarantined_created_post_save(sender, instance, created, **kwargs):,v
-usr/bin/env python3,v
-#!/usr/bin/env python3,V
-#!/usr/bin/env python3# Copyright 2018-2019 Jay Kamat <jaygkamat@gmail.com>## This file is part of qutebrowser.## qutebrowser is free software: you can redistribute it and/or modify# it under the terms of the GNU General Public License as published by# the Free Software Foundation, either version 3 of the License, or# (at your option) any later version.## qutebrowser is distributed in the hope that it will be useful,# but WITHOUT ANY WARRANTY; without even the implied warranty of# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the# GNU General Public License for more details.## You should have received a copy of the GNU General Public License# along with qutebrowser.  If not, see <http://www.gnu.org/licenses/>."""This userscript allows for insertion of usernames and passwords from keepassdatabases using pykeepass. Since it is a userscript, it must be run fromqutebrowser.A sample invocation of this script is::spawn --userscript qute-keepass -p ~/KeePassFiles/MainDatabase.kdbxAnd a sample binding:bind --mode=insert <ctrl-i> spawn --userscript qute-keepass -p ~/KeePassFiles/MainDatabase.kdbx-p or --path is a required argument.--keyfile-path allows you to specify a keepass keyfile. If you only use akeyfile, also add --no-password as well. Specifying --no-password without--keyfile-path will lead to an error.login information is inserted using :insert-text and :fake-key <Tab>, whichmeans you must have a cursor in position before initiating this userscript. Ifyou do not do this, you will get 'element not editable' errors.If keepass takes a while to open the DB, you might want to consider reducingthe number of transform rounds in your database settings.Dependencies: pykeepass (in python3), PyQt5. Without pykeepass, you will get anexit code of 100.********************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!******************WARNING: The login details are viewable as plaintext in qutebrowser's debug log(qute://log) and could be compromised if you decide to submit a crash report!********************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!******************"""# pylint: disable=bad-builtinimport argparseimport enumimport functoolsimport osimport shleximport subprocessimport sysfrom PyQt5.QtCore import QUrlfrom PyQt5.QtWidgets import QApplication, QInputDialog, QLineEdittry:    import pykeepassexcept ImportError as e:    print("pykeepass not found: {}".format(str(e)), file=sys.stderr)    # Since this is a common error, try to print it to the FIFO if we can.    if 'QUTE_FIFO' in os.environ:        with open(os.environ['QUTE_FIFO'], 'w') as fifo:            fifo.write('message-error "pykeepass failed to be imported."\n')            fifo.flush()    sys.exit(100)argument_parser = argparse.ArgumentParser(    description="Fill passwords using keepass.",    formatter_class=argparse.RawDescriptionHelpFormatter,    epilog=__doc__)argument_parser.add_argument('url', nargs='?', default=os.getenv('QUTE_URL'))argument_parser.add_argument('--path', '-p', required=True,                             help='Path to the keepass db.')argument_parser.add_argument('--keyfile-path', '-k', default=None,                             help='Path to a keepass keyfile')argument_parser.add_argument(    '--no-password', action='store_true',    help='Supply if no password is required to unlock this database. '    'Only allowed with --keyfile-path')argument_parser.add_argument(    '--dmenu-invocation', '-d', default='dmenu',    help='Invocation used to execute a dmenu-provider')argument_parser.add_argument(    '--dmenu-format', '-f', default='{title}: {username}',    help='Format string for keys to display in dmenu.'    ' Must generate a unique string.')argument_parser.add_argument(    '--no-insert-mode', '-n', dest='insert_mode', action='store_false',    help="Don't automatically enter insert mode")argument_parser.add_argument(    '--io-encoding', '-i', default='UTF-8',    help='Encoding used to communicate with subprocesses')group = argument_parser.add_mutually_exclusive_group()group.add_argument('--username-fill-only', '-e',                   action='store_true', help='Only insert username')group.add_argument('--password-fill-only', '-w',                   action='store_true', help='Only insert password')CMD_DELAY = 50class ExitCodes(enum.IntEnum):    """Stores various exit codes groups to use."""    SUCCESS = 0    FAILURE = 1    # 1 is automatically used if Python throws an exception    NO_CANDIDATES = 2    USER_QUIT = 3    DB_OPEN_FAIL = 4    INTERNAL_ERROR = 10def qute_command(command):    with open(os.environ['QUTE_FIFO'], 'w') as fifo:        fifo.write(command + '\n')        fifo.flush()def stderr(to_print):    """Extra functionality to echo out errors to qb ui."""    print(to_print, file=sys.stderr)    qute_command('message-error "{}"'.format(to_print))def dmenu(items, invocation, encoding):    """Runs dmenu with given arguments."""    command = shlex.split(invocation)    process = subprocess.run(command, input='\n'.join(items).encode(encoding),                             stdout=subprocess.PIPE)    return process.stdout.decode(encoding).strip()def get_password():    """Get a keepass db password from user."""    _app = QApplication(sys.argv)  # don't remove this local variable    text, ok = QInputDialog.getText(        None, "KeePass DB Password",        "Please enter your KeePass Master Password",        QLineEdit.Password)    if not ok:        stderr('Password Prompt Rejected.')        sys.exit(ExitCodes.USER_QUIT)    return textdef find_candidates(args, host):    """Finds candidates that match host"""    file_path = os.path.expanduser(args.path)    # TODO find a way to keep the db open, so we don't open (and query    # password) it every time    pw = None    if not args.no_password:        pw = get_password()    kf = args.keyfile_path    if kf:        kf = os.path.expanduser(kf)    try:        kp = pykeepass.PyKeePass(file_path, password=pw, keyfile=kf)    except Exception as e:        stderr("There was an error opening the DB: {}".format(str(e)))    return kp.find_entries(url="{}{}{}".format(".*", host, ".*"), regex=True)def candidate_to_str(args, candidate):    """Turns candidate into a human readable string for dmenu"""    return args.dmenu_format.format(title=candidate.title,                                    url=candidate.url,                                    username=candidate.username,                                    path=candidate.path,                                    uuid=candidate.uuid)def candidate_to_secret(candidate):    """Turns candidate into a generic (user, password) tuple"""    return (candidate.username, candidate.password)def run(args):    """Runs qute-keepass"""    if not args.url:        argument_parser.print_help()        return ExitCodes.FAILURE    url_host = QUrl(args.url).host()    if not url_host:        stderr('{} was not parsed as a valid URL!'.format(args.url))        return ExitCodes.INTERNAL_ERROR    # Find candidates matching the host of the given URL    candidates = find_candidates(args, url_host)    if not candidates:        stderr('No candidates for URL {!r} found!'.format(args.url))        return ExitCodes.NO_CANDIDATES    # Create a map so we can get turn the resulting string from dmenu back into    # a candidate    candidates_strs = list(map(functools.partial(candidate_to_str, args),                               candidates))    candidates_map = dict(zip(candidates_strs, candidates))    if len(candidates) == 1:        selection = candidates.pop()    else:        selection = dmenu(candidates_strs,                          args.dmenu_invocation,                          args.io_encoding)        if selection not in candidates_map:            stderr("'{}' was not a valid entry!").format(selection)            return ExitCodes.USER_QUIT        selection = candidates_map[selection]    username, password = candidate_to_secret(selection)    insert_mode = ';; enter-mode insert' if args.insert_mode else ''    if args.username_fill_only:        qute_command('insert-text {}{}'.format(username, insert_mode))    elif args.password_fill_only:        qute_command('insert-text {}{}'.format(password, insert_mode))    else:        # Enter username and password using insert-key and fake-key <Tab>        # (which supports more passwords than fake-key only), then switch back        # into insert-mode, so the form can be directly submitted by hitting        # enter afterwards. It dosen't matter when we go into insert mode, but        # the other commands need to be be executed sequentially, so we add        # delays with later.        qute_command('insert-text {} ;;'                     'later {} fake-key <Tab> ;;'                     'later {} insert-text {}{}'                     .format(username, CMD_DELAY,                             CMD_DELAY * 2, password, insert_mode))    return ExitCodes.SUCCESSif __name__ == '__main__':    arguments = argument_parser.parse_args()    sys.exit(run(arguments)),v
-                breakpoint(),V
-        breakpoint(),V
-DEBUG,v
-    if settings.DEBUG:,V
-        return list(set(links)),V
-def return_sample_page_503(metacrawler):    body = open(        os.path.join(os.path.dirname(__file__), "fixtures/test_dangdang_product_503")    ).read()    request = Request(url=metacrawler.lien)    request.meta["metacrawler"] = metacrawler    response = HtmlResponse(        url="http://static.dangdang.com/503error/error.html",        status=200,        headers=None,        body=body,        encoding="utf-8",        request=request,    )    return response,V
-from django.db.models import Q,V
-import os,V
-from django.utils.encoding import smart_bytes,V
-, smart_bytes(return_pdf_for_item(item)),v
-.tobytes(),v
-_,v
-random_item_pdf,v
-# Python imports,v
-    ,V
-    body = open(        os.path.join(os.path.dirname(__file__), "fixtures/test_dangdang_product_list")    ).read(),V
-x,v
-        self.assertEqual(attachment.message, Message.objects.last()),V
-self.story_attachment.commande.soyouz_item_related.,v
-self.story_attachment.,v
-        # We also need 2 items linked with a command and a story,V
-item,v
-=,v
-e,v
-a,v
-n,v
-len(MessagePj.objects.all(),v
-        attachements = MessagePj.objects.filter(Q(libelle_pj='test2.png') | Q(libelle_pj='test1.png')),V
-response,v
-            breakpoint(),V
-],v
-[,v
-_abc.id,v
-            'files': files,,V
-        post_data = {            'body': 'Test de message',            'story': self.story_abc.id,            'commentaire_message': '',            'a_to': 'merch.service05@amazon.com',            'a_from': self.abc_email.email,            'submit': 'Envoyer',            'societe': self.societe_abc.societe_id,            'message_type': '-1',            'subject': 'Re : RE:[CASE 1685486641] Return policies information needed',            'files': files,        }        qdata = QueryDict("", mutable=True)        qdata.update(post_data)        msg = Message.objects.count()        response = self.client.post(reverse('soyouz:message_create'), qdata, follow=True)        self.assertEqual(response.status_code, 200)        attachements = MessagePj.objects.filter(Q(libelle_pj='test2.png') | Q(libelle_pj='test1.png')),V
-    """Docstring for TestBillAttachment. """,V
-object,v
-MyClass,v
-KIzZoZ74Nd,v
-langue_cn = Langue.objects.get_or_create(libelle="CN")[0]Plateforme.objects.get_or_create(    nom_plateforme="dangdang.com",    actif=1,    api_key="",    api_secret="",    merchantid="",    service_url="http://www.dangdang.com",    currency="EUR",    fast_delivery_only=0,    pricing_against_amazon=1,    calcul_prix_achat=1,    langue_id_fk=langue_cn,    is_european_union=False,    lang="",    merchant_name="",)[0]MetaCrawler.objects.all().delete()cat_1 = Categorie.objects.get_or_create(name="DangDang")[0]cat_2 = Categorie.objects.get_or_create(name="cat_test")[0]MetaCrawler.objects.create(    lien="http://category.dangdang.com/cp01.41.57.00.00.00.html",    metacrawler_categories=cat_1,    metacrawler_status=MetaCrawlerStatus.objects.get(nom="Waiting")),V
--- --- - ------------------- --- ------------------------------------------ ----,V
-from django.utils import datastructures,V
- ,v
-                4/0,V
-each,v
-g,v
-i,v
-attachements,v
-0,v
-c,v
-t,v
-s,v
-.,v
-f,v
-l,v
+cyan,v
+myOwnCoolTheme,v
+ocean,v
 p,v
-y,v
-o,v
-h,v
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"',v
+",V
+,V
+let g:fzf_colors =\ { 'fg':      ['fg', 'Normal'],  \ 'bg':      ['bg', 'Normal'],  \ 'hl':      ['fg', 'Comment'],  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],  \ 'hl+':     ['fg', 'Statement'],  \ 'info':    ['fg', 'PreProc'],  \ 'border':  ['fg', 'Ignore'],  \ 'prompt':  ['fg', 'Conditional'],  \ 'pointer': ['fg', 'Exception'],  \ 'marker':  ['fg', 'Keyword'],  \ 'spinner': ['fg', 'Label'],  \ 'header':  ['fg', 'Comment'] },v
+let g:fzf_history_dir = '~/.local/share/fzf-history',V
+ctags -R --exclude=.git --exclude=node_modules --exclude=test,v
+nmap ,U :Tag<CR>,V
+>,v
+CR,v
+// And this "fail":alert((![]+[])[+[]]+(![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]);,v
+            logger.info(fileid),V
+constraint "adminpricing_nonexis_produit_id_a618f30e_fk_produit_p"DETAIL:  Key (produit_id)=(842237602) is not present in table "produit".,V
+SKU24734SKU_B00008LR10,v
+ttp://172.16.51.9:8080/ALX/pricing/issues/153036/?referrer=gitlab_plugin,v
+        matches = parse_JS(response),V
+        next(matches)        self.assertRaises(StopIteration, next, matches),V
+        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE),V
+        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match        self.assertRaises(StopIteration, next, matches),V
+        self.assertRaises(StopIteration, next, matches),V
 ),v
-uploaded_files,v
-    def save_attachements(self):        if self.cleaned_data.get("uploaded_files"):            for each in self.cleaned_data.get("uploaded_files"):                messagepj = MessagePj(                    file_content=each.read(),                    libelle_pj=each.name,                    mimetype=each.content_type,                    message=self.instance,                )                messagepj.save(),V
-                form.cleaned_data.setdefault("uploaded_files", []).append(pdf),V
-AttributeError: 'bytes' object has no attribute 'read',v
-                    file_content=each.read(),,V
-lafoiratout,v
-                request.FILES.append(pdf),V
-MultiValueDict,v
-            # We get the checked add_bill field            include_billing = form.cleaned_data["include_billing"]            for sku in include_billing:                item = Item.objects.get(sku=sku)                billing_context = BillingView.as_view()(request, item=item)                pdf = PDFResponse(                    request=request,                    template=billing_context.template_name,                    context=billing_context.context_data,                    sanitize=False,                ).rendered_content,V
-pdf,v
-                # form.cleaned_data.setdefault("uploaded_files", []).append(wrapper_file),V
-                wrapper_file = UploadedFile(x, name="Bill for '%s'" % item.titre, content_type="application/pdf", charset="utf-8"),V
-(,v
-class PDFResponse(TemplateResponse):,V
-.__sizeof__(),v
-size_of,v
-    InlineCheckboxes,,V
-InlineCheckboxes,v
-        926: "Rendre la liste de emails dynamique dans crmEmail",,V
+(soup,v
+soup,v
+        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match,V
+    # We should have 0 match,V
+    self.assertRaises(StopIteration, next, matches),V
+        # We take a non-buyer from ABC        self.client.force_login(self.user_abc)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match        self.assertRaises(StopIteration, next, matches),V
+        # We get a buyer from KLD        group = Group.objects.get_or_create(name='Soyouz Achats')[0]        self.user_kld.groups.add(group)        self.user_kld.save()        self.client.force_login(self.user_kld)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 1 match        next(matches)        self.assertRaises(StopIteration, next, matches),V
+start with the working case,v
+        self.user_abc.save(),V
+        self.user_abc.groups.add(group),V
+        # Now we take a buyer from ABC,V
+        # Now we take a buyer from ABC        self.user_abc.groups.add(group)        self.user_abc.save()        self.client.force_login(self.user_abc)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match        self.assertRaises(StopIteration, next, matches),V
+        group = Group.objects.get_or_create(name='Soyouz Achats')[0],V
+        next(matches),V
+kld,v
+        group = Group.objects.get_or_create(name='Soyouz Achats')[0]        self.user_kld.groups.add(group)        self.user_kld.save()        self.client.force_login(self.user_kld)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 1 match        next(matches)        self.assertRaises(StopIteration, next, matches),V
+        breakpoint(),V
+\$\('#id-stories-table'\)\.on\('search\.bs\.table',v
+import,v
+            reverse('soyouz:stories_search_view', kwargs={'filtre': 195}), {'ajax': 1}),V
+        self.achat_kld,V
+description,v
+        ,V
+    def def test_description(self):,V
+one line to give the program's name and a brief description,v
+and "Soyouz Achats" in groups,v
+=,v
+==,v
+ID Age Project        Due Description                              Urg 1 19h Opti Achat KLD 4d  Put 1 & 2 together in view + template.js  7.7,V
+                        console.log(data_current),V
+ && data_current.title,v
+ ,v
+$('#id-stories-table').bootstrapTable('getData'),v
+            console.log("here");,V
+console.log(,v
+getData(),v
+$,v
+$('#id-stories-table').,v
+text,v
+                    console.log(text),V
+resetSearch,v
+destroy,v
+check,v
+",v
+; ,V
+            $('#id-stories-table').on('post-body.bs.table', function () {                load_checkboxes();             });,V
+            focusAndSelectField(".search > input[type=text]"),V
+selecteur_champ_recherche,v
+                focusAndSelectField(selecteur_champ_recherche),V
+B00D5WNV7E ,v
+'#id_simple_search',v
+                focusAndSelectField('#id_simple_search');                window.onfocus = function(){ focusAndSelectField('#id_simple_search'); };                window.addEventListener("keydown", function (e) {                    if (e.ctrlKey && e.keyCode === 70) {                        focusAndSelectField(selecteur_champ_recherche);                        e.preventDefault();                    }                });,V
+            console.log(this),V
+            {% if groupe == "KLD" %},V
+$(this).data('code');,v
+                console.log(groupe),V
+ad,v
+<,v
+                console.load(groupe),V
+                {{4/0}},V
+%,v
+4,v
+-- --- ---- -------------- --- ------------------------------------------- ----,V
+                {{ HELLO }},V
+                {{4/LPLAE}},V
+            focusAndSelectField('#id_simple_search');            window.onfocus = function(){ focusAndSelectField('#id_simple_search'); };            window.addEventListener("keydown", function (e) {                if (e.ctrlKey && e.keyCode === 70) {                    focusAndSelectField(selecteur_champ_recherche);                    e.preventDefault();                }            });,V
+{{ groupe }},v
+user,v
+{{ 4/0 }},V
+{% set user=request.user %},V
+           {%4/0%},V
+/soyouz/stories/search/195/?is_search=,v
+           data-data={{ request.user }},V
+https://bootstrap-table.com/docs/api/table-options/,v
+                console.log(data),V
+            console.log(document),V
