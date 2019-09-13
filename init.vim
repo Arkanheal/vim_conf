@@ -36,6 +36,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Now the actual plugins:
 
+" Wanna test those out
+Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+
 " Override configs by directory
 Plug 'arielrossanigo/dir-configs-override.vim'
 
@@ -122,7 +125,7 @@ Plug 'lilydjwg/colorizer'
 Plug 't9md/vim-choosewin'
 
 " Async linter
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Generate html in a simple way
 Plug 'mattn/emmet-vim'
@@ -144,8 +147,11 @@ Plug 'vim-scripts/YankRing.vim'
 Plug 'myusuf3/numbers.vim'
 
 " Snippets
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+" Javascript
+Plug 'pangloss/vim-javascript'
 
 " devicons
 Plug 'ryanoasis/vim-devicons'
@@ -236,6 +242,9 @@ map <M-Right> :tabn<CR>
 imap <M-Right> <ESC>:tabn<CR>
 map <M-Left> :tabp<CR>
 imap <M-Left> <ESC>:tabp<CR>
+
+" External commands
+autocmd FileType python nnoremap <leader>bl :!black %<CR>
 
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
@@ -386,21 +395,29 @@ let g:polyglot_disabled = ['latex']
 " Markdown preview
 let vim_markdown_preview_github=1
 
+" COC
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsEditSplit="vertical"
 
-" Lightline conf
+" Lightline conf {{{1
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'tagbar' ] ]
+    \ },
+    \ 'component': {
+    \   'tagbar': '%{tagbar#currenttag("[%s]", "", "f")}',
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
+    \   'gitbranch': 'fugitive#head',
+    \   'cocstatus' : 'coc#status',
+    \   'currentfunction': 'CoCCurrentFunction'
     \ },
     \ }

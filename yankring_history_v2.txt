@@ -1,100 +1,100 @@
-cyan,v
-myOwnCoolTheme,v
-ocean,v
-p,v
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"',v
-",V
-,V
-let g:fzf_colors =\ { 'fg':      ['fg', 'Normal'],  \ 'bg':      ['bg', 'Normal'],  \ 'hl':      ['fg', 'Comment'],  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],  \ 'hl+':     ['fg', 'Statement'],  \ 'info':    ['fg', 'PreProc'],  \ 'border':  ['fg', 'Ignore'],  \ 'prompt':  ['fg', 'Conditional'],  \ 'pointer': ['fg', 'Exception'],  \ 'marker':  ['fg', 'Keyword'],  \ 'spinner': ['fg', 'Label'],  \ 'header':  ['fg', 'Comment'] },v
-let g:fzf_history_dir = '~/.local/share/fzf-history',V
-ctags -R --exclude=.git --exclude=node_modules --exclude=test,v
-nmap ,U :Tag<CR>,V
->,v
-CR,v
-// And this "fail":alert((![]+[])[+[]]+(![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]);,v
-            logger.info(fileid),V
-constraint "adminpricing_nonexis_produit_id_a618f30e_fk_produit_p"DETAIL:  Key (produit_id)=(842237602) is not present in table "produit".,V
-SKU24734SKU_B00008LR10,v
-ttp://172.16.51.9:8080/ALX/pricing/issues/153036/?referrer=gitlab_plugin,v
-        matches = parse_JS(response),V
-        next(matches)        self.assertRaises(StopIteration, next, matches),V
-        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE),V
-        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match        self.assertRaises(StopIteration, next, matches),V
-        self.assertRaises(StopIteration, next, matches),V
-),v
-(soup,v
-soup,v
-        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match,V
-    # We should have 0 match,V
-    self.assertRaises(StopIteration, next, matches),V
-        # We take a non-buyer from ABC        self.client.force_login(self.user_abc)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match        self.assertRaises(StopIteration, next, matches),V
-        # We get a buyer from KLD        group = Group.objects.get_or_create(name='Soyouz Achats')[0]        self.user_kld.groups.add(group)        self.user_kld.save()        self.client.force_login(self.user_kld)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 1 match        next(matches)        self.assertRaises(StopIteration, next, matches),V
-start with the working case,v
-        self.user_abc.save(),V
-        self.user_abc.groups.add(group),V
-        # Now we take a buyer from ABC,V
-        # Now we take a buyer from ABC        self.user_abc.groups.add(group)        self.user_abc.save()        self.client.force_login(self.user_abc)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 0 match        self.assertRaises(StopIteration, next, matches),V
-        group = Group.objects.get_or_create(name='Soyouz Achats')[0],V
-        next(matches),V
-kld,v
-        group = Group.objects.get_or_create(name='Soyouz Achats')[0]        self.user_kld.groups.add(group)        self.user_kld.save()        self.client.force_login(self.user_kld)        response = self.client.get(            reverse('soyouz:stories_search_view', kwargs={'filtre': 195})        )        soup = BeautifulSoup(response.content, 'html.parser')        # We get the script markup that contains the javascript written in        # stories_set_logistique        script_mark = str(soup.find_all("script")[-1:][0])        regex = r"\$\('#id-stories-table'\)\.on\('search\.bs\.table'"        matches = re.finditer(regex, script_mark, re.MULTILINE)        # We should have 1 match        next(matches)        self.assertRaises(StopIteration, next, matches),V
+m,v
+(url,v
+https://www.youtube.com/watch?v=2k0SmqbBIpQ,v
+        self.maxDiff = None,V
+[                                produit_meta_etat                            ] = product_new_price_dict,v
+{,v
+],v
+KIzZoZ74Nd,v
         breakpoint(),V
-\$\('#id-stories-table'\)\.on\('search\.bs\.table',v
-import,v
-            reverse('soyouz:stories_search_view', kwargs={'filtre': 195}), {'ajax': 1}),V
-        self.achat_kld,V
-description,v
-        ,V
-    def def test_description(self):,V
-one line to give the program's name and a brief description,v
-and "Soyouz Achats" in groups,v
-=,v
+            },V
+            {,V
+        breakpoint()        item_new = item["New"],V
+            condition_in_item.append(list(condition_dict.keys())),V
+            breakpoint(),V
+key for key in,v
+[,v
+item,v
+,V
+.keys,v
+m()),v
+{}),v
+ 0,v
+                    condition not in result.keys(),V
+                    result[condition] = {                        "produit_prix": produit_prix,                        "produit_shippingTime": "",  #                        "produit_etat": condition,                        "produit_FulfillmentChannel": "Merchant",                        "produit_fdp": produit_fdp,                        "produit_plateforme": domain,                        "ships_domestically": True,                    },V
+                        "produit_prix": produit_prix,                        "produit_shippingTime": "",  #                        "produit_etat": condition,                        "produit_FulfillmentChannel": "Merchant",                        "produit_fdp": produit_fdp,                        "produit_plateforme": domain,                        "ships_domestically": True,,V
+{},v
+[0,v
+min_offers["New"]["produit_fdp"], 0),v
+min_offers["New"]["produit_fdp"],v
+dict,v
+                },,V
+asin,v
+    Si on a ships_dom == True et que total < min[1]:        on save    Si on a ships_dom == True et que total < min[0]:        On save aussi    Si on a ships_dom == False et que total < min [1] < min[0]:        on met dans min[1]    Sinon balek    Si total < min[0]:        si total < min[1]:            Si ships_dom == True:                On save le nouveau True et on supprime le min[1]            else:                On save le nouveau False        else:            Si ships_dom == True:                On save le nouveau True            Sinon:                balek                    min[0] > min[1],V
+,,v
+False,v
+                                        breakpoint(),V
+                                        # We remove the old product if it exists                                        if existing_price_false:,V
+                                breakpoint(),V
+38711,v
+1016,v
+g>,v
+Merchant,v
+ 1,v
+                                if ex,V
+                                        ),V
+                                            "inf",V
+# if it's the lowest,v
+                                        # We keep min_price[state][1] only,V
+true,v
+ ,v
+                                        # We keep min_price[state][1] only if it's the lowest                                        min_price[product_new_meta_etat][1] = float(                                            "inf"                                        ),V
+joliesardinnAujourd’hui à 14:29tout n'est que superficiel,v
+      pass,v
+Then,v
+                                    dict_to_add = {                                        product_new_meta_etat: {                                            SHIPS_DOMESTICALLY[                                                ships_domestically                                            ]: product_new_price_dict                                        }                                    },V
+                                        products_prices_dict[product_asin].append(                                        ),V
+e,v
+                                    pass,V
+ False,v
+ is,v
 ==,v
-ID Age Project        Due Description                              Urg 1 19h Opti Achat KLD 4d  Put 1 & 2 together in view + template.js  7.7,V
-                        console.log(data_current),V
- && data_current.title,v
- ,v
-$('#id-stories-table').bootstrapTable('getData'),v
-            console.log("here");,V
-console.log(,v
-getData(),v
-$,v
-$('#id-stories-table').,v
-text,v
-                    console.log(text),V
-resetSearch,v
-destroy,v
-check,v
-",v
-; ,V
-            $('#id-stories-table').on('post-body.bs.table', function () {                load_checkboxes();             });,V
-            focusAndSelectField(".search > input[type=text]"),V
-selecteur_champ_recherche,v
-                focusAndSelectField(selecteur_champ_recherche),V
-B00D5WNV7E ,v
-'#id_simple_search',v
-                focusAndSelectField('#id_simple_search');                window.onfocus = function(){ focusAndSelectField('#id_simple_search'); };                window.addEventListener("keydown", function (e) {                    if (e.ctrlKey && e.keyCode === 70) {                        focusAndSelectField(selecteur_champ_recherche);                        e.preventDefault();                    }                });,V
-            console.log(this),V
-            {% if groupe == "KLD" %},V
-$(this).data('code');,v
-                console.log(groupe),V
-ad,v
-<,v
-                console.load(groupe),V
-                {{4/0}},V
-%,v
-4,v
--- --- ---- -------------- --- ------------------------------------------- ----,V
-                {{ HELLO }},V
-                {{4/LPLAE}},V
-            focusAndSelectField('#id_simple_search');            window.onfocus = function(){ focusAndSelectField('#id_simple_search'); };            window.addEventListener("keydown", function (e) {                if (e.ctrlKey && e.keyCode === 70) {                    focusAndSelectField(selecteur_champ_recherche);                    e.preventDefault();                }            });,V
-{{ groupe }},v
-user,v
-{{ 4/0 }},V
-{% set user=request.user %},V
-           {%4/0%},V
-/soyouz/stories/search/195/?is_search=,v
-           data-data={{ request.user }},V
-https://bootstrap-table.com/docs/api/table-options/,v
-                console.log(data),V
-            console.log(document),V
+[product_asin],v
+SHIPS_DOMESTICALLY[                                                            ships_domestically                                                        ],v
+                                        products_prices_dict[produit_asin].append(                                            {                                                product_new_meta_etat: {                                                    SHIPS_DOMESTICALLY[                                                        ships_domestically                                                    ]: product_new_price_dict                                                }                                            }                                        ),V
+                                        pass,V
+    Si on a ships_dom == True et que total < min[1]:        on save    Si on a ships_dom == True et que total < min[0]:        On save aussi    Si on a ships_dom == False et que total < min [1] < min[0]:        on met dans min[1]    Sinon balek    Si total < min[0]:        si total < min[1]:            Si ships_dom == True:                On save le nouveau True et on supprime le min[1]            else:                On save le nouveau False        else:            Si ships_dom == True:                On save le nouveau True,v
+min_price[product_new_meta_etat][0]:,v
+                                    existing_price_true = get_price_dict(                                        products_prices_dict,                                        product_asin,                                        product_new_meta_etat,                                        0,                                    )                                    existing_price_false = get_price_dict(                                        products_prices_dict,                                        product_asin,                                        product_new_meta_etat,                                        1,                                    ),V
+                                    existing_prices = (),V
+                                    if SHIPS_DOMESTICALLY[ships_domestically]:,V
+                                            SHIPS_DOMESTICALLY[not ships_domestically],V
+                                            SHIPS_DOMESTICALLY[ships_domestically],V
+:,v
+pass,v
+    Si total < min[0]:         si ship ==True:            si ,V
+                                            existing_true = get,V
+                                            min_price[product_new_meta_etat][1] = float("inf"),V
+float,v
+                                    existing_price = get_price_dict(                                        products_prices_dict,                                        product_asin,                                        product_new_meta_etat,                                        SHIPS_DOMESTICALLY[ships_domestically],                                    )                                    # As it's a list we need to remove the                                    # precedent existing price                                    if existing_price:                                        products_prices_dict[product_asin].remove(                                            existing_price                                        ),V
+                                    products_prices_dict[product_asin].append(                                        {                                            product_new_meta_etat: {                                                SHIPS_DOMESTICALLY[                                                    ships_domestically                                                ]: product_new_price_dict                                            }                                        }                                    )                                    min_price[product_new_meta_etat][                                        0                                    ] = total_price,V
+                                    else:                                        if (                                            total_price                                            <= min_price[product_new_meta_etat][1]                                        ):                                            products_prices_dict[product_asin].append(                                                {                                                    product_new_meta_etat: {                                                        SHIPS_DOMESTICALLY[                                                            ships_domestically                                                        ]: product_new_price_dict                                                    }                                                }                                            )                                            min_price[product_new_meta_etat][                                                1                                            ] = total_price,V
+            },,V
+Dict,v
+j,v
+"1455753041": ,v
+                                        products_prices_dict[product_asin].append(                                            {                                                product_new_meta_etat: {                                                    SHIPS_DOMESTICALLY[                                                        ships_domestically                                                    ]: product_new_price_dict                                                }                                            }                                        )                                        min_price[product_new_meta_etat][0] = total_price,V
+                                    # As it's a list we need to remove the                                    # precedent existing price                                    if existing_price:                                        products_prices_dict[product_asin].remove(                                            existing_price                                        ),V
+                                        existing_price = get_price_dict(                                            products_prices_dict,                                            product_asin,                                            product_new_meta_etat,                                            SHIPS_DOMESTICALLY[ships_domestically],                                        )                                        # As it's a list we need to remove the                                        # precedent existing price                                        if existing_price:                                            products_prices_dict[product_asin].remove(                                                existing_price                                            ),V
+            ),,V
+           ,V
+ sorted(,v
+sorted(,v
+et,v
+"B001CVBI3O":,v
+DictEqual,v
+p,v
+B001CVBI3O,v
+from collection import Counter,V
+t,v
+c,v
