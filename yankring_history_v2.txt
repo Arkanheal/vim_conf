@@ -1,3 +1,4 @@
+KIzZoZ74Nd,v
 m,v
 (url,v
 https://www.youtube.com/watch?v=2k0SmqbBIpQ,v
@@ -5,7 +6,6 @@ https://www.youtube.com/watch?v=2k0SmqbBIpQ,v
 [                                produit_meta_etat                            ] = product_new_price_dict,v
 {,v
 ],v
-KIzZoZ74Nd,v
         breakpoint(),V
             },V
             {,V
