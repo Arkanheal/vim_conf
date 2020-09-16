@@ -1,100 +1,100 @@
-KIzZoZ74Nd,v
-m,v
-(url,v
-https://www.youtube.com/watch?v=2k0SmqbBIpQ,v
-        self.maxDiff = None,V
-[                                produit_meta_etat                            ] = product_new_price_dict,v
-{,v
-],v
-        breakpoint(),V
-            },V
-            {,V
-        breakpoint()        item_new = item["New"],V
-            condition_in_item.append(list(condition_dict.keys())),V
-            breakpoint(),V
-key for key in,v
-[,v
-item,v
-,V
-.keys,v
-m()),v
-{}),v
- 0,v
-                    condition not in result.keys(),V
-                    result[condition] = {                        "produit_prix": produit_prix,                        "produit_shippingTime": "",  #                        "produit_etat": condition,                        "produit_FulfillmentChannel": "Merchant",                        "produit_fdp": produit_fdp,                        "produit_plateforme": domain,                        "ships_domestically": True,                    },V
-                        "produit_prix": produit_prix,                        "produit_shippingTime": "",  #                        "produit_etat": condition,                        "produit_FulfillmentChannel": "Merchant",                        "produit_fdp": produit_fdp,                        "produit_plateforme": domain,                        "ships_domestically": True,,V
-{},v
-[0,v
-min_offers["New"]["produit_fdp"], 0),v
-min_offers["New"]["produit_fdp"],v
-dict,v
-                },,V
-asin,v
-    Si on a ships_dom == True et que total < min[1]:        on save    Si on a ships_dom == True et que total < min[0]:        On save aussi    Si on a ships_dom == False et que total < min [1] < min[0]:        on met dans min[1]    Sinon balek    Si total < min[0]:        si total < min[1]:            Si ships_dom == True:                On save le nouveau True et on supprime le min[1]            else:                On save le nouveau False        else:            Si ships_dom == True:                On save le nouveau True            Sinon:                balek                    min[0] > min[1],V
-,,v
-False,v
-                                        breakpoint(),V
-                                        # We remove the old product if it exists                                        if existing_price_false:,V
-                                breakpoint(),V
-38711,v
-1016,v
-g>,v
-Merchant,v
- 1,v
-                                if ex,V
-                                        ),V
-                                            "inf",V
-# if it's the lowest,v
-                                        # We keep min_price[state][1] only,V
-true,v
- ,v
-                                        # We keep min_price[state][1] only if it's the lowest                                        min_price[product_new_meta_etat][1] = float(                                            "inf"                                        ),V
-joliesardinnAujourd’hui à 14:29tout n'est que superficiel,v
-      pass,v
-Then,v
-                                    dict_to_add = {                                        product_new_meta_etat: {                                            SHIPS_DOMESTICALLY[                                                ships_domestically                                            ]: product_new_price_dict                                        }                                    },V
-                                        products_prices_dict[product_asin].append(                                        ),V
-e,v
-                                    pass,V
- False,v
- is,v
-==,v
-[product_asin],v
-SHIPS_DOMESTICALLY[                                                            ships_domestically                                                        ],v
-                                        products_prices_dict[produit_asin].append(                                            {                                                product_new_meta_etat: {                                                    SHIPS_DOMESTICALLY[                                                        ships_domestically                                                    ]: product_new_price_dict                                                }                                            }                                        ),V
-                                        pass,V
-    Si on a ships_dom == True et que total < min[1]:        on save    Si on a ships_dom == True et que total < min[0]:        On save aussi    Si on a ships_dom == False et que total < min [1] < min[0]:        on met dans min[1]    Sinon balek    Si total < min[0]:        si total < min[1]:            Si ships_dom == True:                On save le nouveau True et on supprime le min[1]            else:                On save le nouveau False        else:            Si ships_dom == True:                On save le nouveau True,v
-min_price[product_new_meta_etat][0]:,v
-                                    existing_price_true = get_price_dict(                                        products_prices_dict,                                        product_asin,                                        product_new_meta_etat,                                        0,                                    )                                    existing_price_false = get_price_dict(                                        products_prices_dict,                                        product_asin,                                        product_new_meta_etat,                                        1,                                    ),V
-                                    existing_prices = (),V
-                                    if SHIPS_DOMESTICALLY[ships_domestically]:,V
-                                            SHIPS_DOMESTICALLY[not ships_domestically],V
-                                            SHIPS_DOMESTICALLY[ships_domestically],V
-:,v
-pass,v
-    Si total < min[0]:         si ship ==True:            si ,V
-                                            existing_true = get,V
-                                            min_price[product_new_meta_etat][1] = float("inf"),V
-float,v
-                                    existing_price = get_price_dict(                                        products_prices_dict,                                        product_asin,                                        product_new_meta_etat,                                        SHIPS_DOMESTICALLY[ships_domestically],                                    )                                    # As it's a list we need to remove the                                    # precedent existing price                                    if existing_price:                                        products_prices_dict[product_asin].remove(                                            existing_price                                        ),V
-                                    products_prices_dict[product_asin].append(                                        {                                            product_new_meta_etat: {                                                SHIPS_DOMESTICALLY[                                                    ships_domestically                                                ]: product_new_price_dict                                            }                                        }                                    )                                    min_price[product_new_meta_etat][                                        0                                    ] = total_price,V
-                                    else:                                        if (                                            total_price                                            <= min_price[product_new_meta_etat][1]                                        ):                                            products_prices_dict[product_asin].append(                                                {                                                    product_new_meta_etat: {                                                        SHIPS_DOMESTICALLY[                                                            ships_domestically                                                        ]: product_new_price_dict                                                    }                                                }                                            )                                            min_price[product_new_meta_etat][                                                1                                            ] = total_price,V
-            },,V
-Dict,v
+nmap <silent> gd <Plug>(coc-definition)nmap <silent> gy <Plug>(coc-type-definition)nmap <silent> gi <Plug>(coc-implementation)nmap <silent> gr <Plug>(coc-references),v
+Plug 'dart-lang/dart-vim-plugin'Plug 'thosakwe/vim-flutter',v
+echo Setting up aliasesalias please sudoecho End,V
+export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin",V
+git@github.com:yoannrey/BlindSpot.git,v
+}}},v
+:{{{{{{,v
+        - ,V
 j,v
-"1455753041": ,v
-                                        products_prices_dict[product_asin].append(                                            {                                                product_new_meta_etat: {                                                    SHIPS_DOMESTICALLY[                                                        ships_domestically                                                    ]: product_new_price_dict                                                }                                            }                                        )                                        min_price[product_new_meta_etat][0] = total_price,V
-                                    # As it's a list we need to remove the                                    # precedent existing price                                    if existing_price:                                        products_prices_dict[product_asin].remove(                                            existing_price                                        ),V
-                                        existing_price = get_price_dict(                                            products_prices_dict,                                            product_asin,                                            product_new_meta_etat,                                            SHIPS_DOMESTICALLY[ships_domestically],                                        )                                        # As it's a list we need to remove the                                        # precedent existing price                                        if existing_price:                                            products_prices_dict[product_asin].remove(                                                existing_price                                            ),V
-            ),,V
-           ,V
- sorted(,v
-sorted(,v
-et,v
-"B001CVBI3O":,v
-DictEqual,v
-p,v
-B001CVBI3O,v
-from collection import Counter,V
-t,v
-c,v
+-,V
+,V
+Date,v
+Technologies,v
+- (Swift),V
+/ Nest,v
+Dart/Flutter,v
+",v
+- Système de score,V
+- Définition de la durée des extraits,V
+Haste + MasteryCrit + MasteryMastery + VersHaste + CritCrit + VersCrit + MasteryHaste + Crit,v
+        function myFunction() {            var x = document.getElementById("myTopnav");            if (x.className === "topnav"){                x.className += "responsive";            } else {                x.className = "topnav";            }        },V
+left,v
+font: ;,v
+#header{    display: flex;}div#titre {    font-family: "Gabriola";    font-size: 22px;    width: 20%;}div.header_buttons {    width: 80%;},V
+=,v
+A,v
+e,v
+r,v
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">,v
+ http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu precise ,v
+  let g:tex_flavor = 'latex',V
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list,v
+-block,v
+inline,v
+</div>,v
+        <div class="header_buttons"></div>        <div id="displayH"><a href="#"></a></div>        <div id="productsH"><a href="#"></a></div>        <div id="historyH"><a href="#"></a></div>        <div id="contactH"><a href="#"></a></div>        <div id="accH"><a href="#"></a></div>,V
+headreB5,v
+headreB4,v
+galerieH,v
+headreB3,v
+headreB2,v
+headreB1,v
+buttonH$,v
+buttonH1,v
+18px,v
+16px,v
+20px,v
+    font-weight: Bold;,V
+normal,v
+italic,v
+Ink Free,v
+bold,v
+Yukimidraw,v
+Lucida Console,v
+    color : #F4FFDE;,V
+},V
+Impact,v
+    font-family: Impact;,V
+            <div class="titre1">Yukimidraw</div>,V
+DDD,v
+666,v
+#,v
+#F4FFDE,v
+    background-color: #000;,V
+F,v
+333,v
+111,v
+.titre1 {},V
+    color: #666;,V
+            <div id="titre"><h1>Yukimidraw</h1></div>            <div id="titre"><h1>Yukimidraw</h1></div>            <div id="titre"><h1>Yukimidraw</h1></div>            <div id="titre"><h1>Yukimidraw</h1></div>            <div id="titre"><h1>Yukimidraw</h1></div>            <div id="titre"><h1>Yukimidraw</h1></div>,V
+            <div id="titre"><h1>Yukimidraw</h1></div>,V
+000,v
+555,v
+444,v
+F00,v
+{Yukimidraw},v
+k,v
+        ,V
+font-,v
+red,v
+, Arial;,v
+effect,v
+font: "Lucida Console";,v
+   <h1 class="main_header">Titre numéro 1</h1>,V
+en,v
+doctypemainhtmlhead,V
+SELECT coalesce(z.product_name, ''),    coalesce(y.amount, 0) - coalesce(x.amount, 0) amountFROM (SELECT product_id,        sum(quantity) amount      FROM order_items       INNER JOIN orders o ON o.order_id = order_items.order_id       WHERE o.status = 'Pending'      GROUP BY product_id) xFULL JOIN (SELECT product_id,            sum(quantity) amount           FROM inventories           GROUP BY product_id) yON x.product_id = y.product_idFULL JOIN (SELECT product_id, product_name           FROM products) z ON x.product_id = z.product_idORDER BY amount;,v
+SET session_replication_role = 'origin';,V
+ddET session_replication_role = 'replica';,V
+S,v
+replica,v
+SET session_replication_role = 'replica';,v
+SET DEFINE OFF;,V
+-- ALTER TABLE countries ENABLE CONSTRAINT fk_countries_regions;-- ALTER TABLE locations ENABLE CONSTRAINT fk_locations_countries;-- ALTER TABLE warehouses ENABLE CONSTRAINT fk_warehouses_locations;-- ALTER TABLE employees ENABLE CONSTRAINT fk_employees_manager;-- ALTER TABLE products ENABLE CONSTRAINT fk_products_categories;-- ALTER TABLE contacts ENABLE CONSTRAINT fk_contacts_customers;-- ALTER TABLE orders ENABLE CONSTRAINT fk_orders_customers;-- ALTER TABLE orders ENABLE CONSTRAINT fk_orders_employees;-- ALTER TABLE order_items ENABLE CONSTRAINT fk_order_items_products;-- ALTER TABLE order_items ENABLE CONSTRAINT fk_order_items_orders;-- ALTER TABLE inventories ENABLE CONSTRAINT fk_inventories_products;-- ALTER TABLE inventories ENABLE CONSTRAINT fk_inventories_warehouses;,V
+CONSTRAINT fk_inventories_warehouses,v
+CONSTRAINT fk_inventories_products,v
+CONSTRAINT fk_order_items_orders,v
+CONSTRAINT fk_order_items_products,v
+CONSTRAINT fk_orders_employees,v
+CONSTRAINT fk_orders_customers,v

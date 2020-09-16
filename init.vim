@@ -80,9 +80,19 @@ Plug 'fisadev/fisa-vim-colorscheme'
 " Lightline
 Plug 'itchyny/lightline.vim'
 
+" Emojis
+Plug 'junegunn/vim-emoji'
+
 " Code and files fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" Colorscheme packs
+Plug 'flazz/vim-colorschemes'
+Plug 'felixhummel/setcolors.vim'
 
 " Pending tasks list
 Plug 'fisadev/FixedTaskList.vim'
@@ -99,7 +109,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'Townk/vim-autoclose'
 
 " Tag gesiton
-Plug 'craigemery/vim-autotag'
+"Plug 'craigemery/vim-autotag'
 
 " Surround
 Plug 'tpope/vim-surround'
@@ -147,14 +157,21 @@ Plug 'vim-scripts/YankRing.vim'
 Plug 'myusuf3/numbers.vim'
 
 " Snippets
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" Javascript
-Plug 'pangloss/vim-javascript'
 
 " devicons
 Plug 'ryanoasis/vim-devicons'
+
+" Omnisharp C# Vim
+Plug 'OmniSharp/omnisharp-vim'
+
+" Django improvment
+Plug 'tweekmonster/django-plus.vim'
+
+" Dart
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
@@ -184,6 +201,9 @@ set encoding=UTF-8
 
 " show line numbers
 set nu
+
+" fold method
+set fdm=marker
 
 " Removing insert because of lightline
 set noshowmode
@@ -258,6 +278,13 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 " fix problems with uncommon shells (fish, xonsh) and plugins running commands
 " (neomake, ...)
 set shell=/bin/bash 
+
+" Figure out the system Python for Neovim.
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+endif
 
 " ============================================================================
 " Plugins settings and mappings
@@ -388,6 +415,7 @@ autocmd FileType python,coffee BracelessEnable +indent +fold
 
 " vimTeX -------------------------------
 let g:vimtex_compiler_progname = 'nvr'
+let g:tex_flavor = 'latex'
 
 " vim-polyglot -------------------------
 let g:polyglot_disabled = ['latex']
@@ -397,14 +425,72 @@ let vim_markdown_preview_github=1
 
 " COC
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" OmniSharp
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_mono = 1
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+let g:OmniSharp_selector_ui = 'fzf' 
+let g:OmniSharp_timeout = 5
+set completeopt=longest,menuone,preview
+set previewheight=5
+let g:OmniSharp_highlight_types = 3
+augroup omnisharp_commands
+    autocmd!
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+    " Find all code errors/warnings for the current solution and populate the quickfix window
+    autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
+augroup END
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
+" ALE JS
+let g:ale_fixers = {
+\   'javascript': [
+\       'eslint'
+\   ],
+\}
+
+" Fix files on save
+let g:ale_fix_on_save = 1
 " Lightline conf {{{1
 let g:lightline = {
     \ 'colorscheme': 'wombat',
