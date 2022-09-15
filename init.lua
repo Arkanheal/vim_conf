@@ -1,7 +1,6 @@
 require('plugins')
 require('settings')
 require('mappings')
-require('lualine_config')
 require('setup')
 require('telescope_config')
 require('lsp_zero')
