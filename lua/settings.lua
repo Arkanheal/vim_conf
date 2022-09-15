@@ -63,7 +63,7 @@ vim.opt.smartcase = true
 
 -- delay before showing matching parenthesis/brackets/etc.
 vim.opt.matchtime = 2
-vim.opt.mps = table.insert(vim.opt.mps, ",<:>")
+vim.opt.mps = table.insert(vim.opt.mps, "(:),{:},[:],<:>")
 
 -- White characters
 vim.opt.autoindent = true
