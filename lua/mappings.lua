@@ -24,6 +24,9 @@ local tmap = function(shortcut, command)
   map('t', shortcut, command)
 end
 
+-- Remap CRTL-C to ESC
+imap('<C-c>', '<Esc>')
+
 -- sane regexes
 nmap('/', '/\\v')
 vmap('/', '/\\v')
@@ -34,7 +37,6 @@ nmap('N', 'Nzzzv')
 
 -- Same when jumping around
 nmap('g;', 'g;zz')
---nmap('g', 'g,zz') -- for some reason doesn't work well
 
 -- Open a Quickfix window for the last search.
 nmap("<leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>")
@@ -59,14 +61,15 @@ nmap('<C-l>', '<C-w>l')
 vmap('<', '<gv')
 vmap('>', '>gv')
 
+-- Line moving around
+nmap("<A-j>", ":m+<CR>==")
+nmap("<A-k>", ":m-2<CR>==")
+vmap("<A-j>", ":m '>+1<CR>gv=gv")
+vmap("<A-k>", ":m-2<CR>gv=gv")
+
 -- home and end line in command mode
 cmap('<C-a>', '<Home>')
 cmap('<C-e>', '<End>')
-
--- Terminal
--- ESC to go to normal mode in terminal
-tmap('<C-s>', '<C-\\><C-n>')
-tmap('<Esc><Esc>', '<C-\\><C-n>')
 
 -- Easy window split; C-w v -> vv, C-w - s -> ss
 nmap('vv', '<C-w>v')
@@ -93,3 +96,13 @@ nmap('<leader>t', '<cmd>TestNearest<cr>')
 nmap('<leader>T', '<cmd>TestFile<cr>')
 nmap('<leader>A', '<cmd>TestSuite<cr>')
 nmap('<leader>l', '<cmd>TestLast<cr>')
+
+nmap('<leader>tt', '<cmd>LeetCodeTest<cr>')
+nmap('<leader>ts', '<cmd>LeetCodeSubmit<cr>')
+nmap('<leader>tl', '<cmd>LeetCodeList<cr>')
+
+-- Markdown Preview
+nmap('<leader>p', '<cmd>MarkdownPreview<cr>')
+
+-- LSPZero
+nmap('<leader>Rl', '<cmd>LspZeroFormat<cr>');

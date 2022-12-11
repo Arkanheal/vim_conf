@@ -47,7 +47,9 @@ vim.opt.showbreak= '↪'
 vim.opt.number = true
 -- always reserve 3 spaces for line number
 vim.opt.numberwidth = 3
- -- keep 1 column for plugins
+-- relativenumber
+vim.opt.relativenumber = true
+-- keep 1 column for plugins
 vim.opt.signcolumn = 'yes'
 vim.opt.modelines = 0
 -- display command in bottom bar
@@ -63,15 +65,15 @@ vim.opt.smartcase = true
 
 -- delay before showing matching parenthesis/brackets/etc.
 vim.opt.matchtime = 2
-vim.opt.mps = table.insert(vim.opt.mps, "(:),{:},[:],<:>")
+-- vim.opt.mps = table.insert(vim.opt.mps, "(:),{:},[:],<:>")
 
 -- White characters
 vim.opt.autoindent = true
 vim.opt.smartindent = true
--- 1 tab = 2 spaces (except for python see below)
-vim.opt.tabstop = 2
+-- 1 tab = 4 spaces
+vim.opt.tabstop = 4
 -- indentation rule
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 -- see fo-table
 vim.opt.formatoptions = 'qnj1'
 -- expand tab to spaces
@@ -92,10 +94,9 @@ vim.opt.directory = '/.vim/tmp/swap//'
 
 -- File type specific formatting
 vim.cmd([[
-  au FileType python                  set ts=4 sw=4
-  au BufRead,BufNewFile *.md          set ft=mkd tw=80 syntax=markdown
-  au BufRead,BufNewFile *.ppmd        set ft=mkd tw=80 syntax=markdown
-  au BufRead,BufNewFile *.markdown    set ft=mkd tw=80 syntax=markdown
+  au BufRead,BufNewFile *.md          set ft=markdown tw=80 syntax=markdown
+  au BufRead,BufNewFile *.ppmd        set ft=markdown tw=80 syntax=markdown
+  au BufRead,BufNewFile *.markdown    set ft=markdown tw=80 syntax=markdown
   au BufRead,BufNewFile *.slimbars    set syntax=slim
 ]])
 
@@ -122,7 +123,4 @@ vim.g.tokyonight_style = 'night'
 vim.o.background = 'dark'
 
 -- Python
-vim.cmd([[
-  autocmd FileType python,coffee BracelessEnable +indent +fold
-]])
 vim.g.python3_host_prog = '/usr/bin/python3'

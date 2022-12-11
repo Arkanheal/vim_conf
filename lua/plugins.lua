@@ -37,7 +37,7 @@ return require('packer').startup(function()
   -- Custom configurations by directory (to test with LUA)
   use 'arielrossanigo/dir-configs-override.vim'
 
-  -- LSP (test that out)
+  -- LSP 
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -77,8 +77,35 @@ return require('packer').startup(function()
     end
   }
 
+  -- Vimwiki
+  use {
+    "vimwiki/vimwiki", branch = "dev",
+    config = function()
+      vim.g.vimwiki_list = {
+        {
+          template_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/vimwiki/autoload/",
+          syntax = "markdown",
+          ext = ".md",
+        },
+      }
+      vim.g["vimwiki_global_ext"] = 0
+    end,
+  }
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = { "markdown", "text" },
+    config = function()
+      vim.g["mkdp_auto_close"] = 0
+      vim.g["mkdp_filetypes"] = { "markdown", "text" }
+    end,
+  }
+
   -- Test
   use 'vim-test/vim-test'
+
+  -- Leetcode
+  use 'ianding1/leetcode.vim'
 
   -- Python
   -- Detect indent blocks
