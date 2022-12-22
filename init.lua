@@ -1,6 +1,1 @@
-require('plugins')
-require('settings')
-require('mappings')
-require('setup')
-require('telescope_config')
-require('lsp_zero')
+require("arkan")
