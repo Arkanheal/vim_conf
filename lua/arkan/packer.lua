@@ -17,7 +17,13 @@ return require('packer').startup(function(use)
 
 
     -- Commons
-    use 'kylechui/nvim-surround' -- Changes word surround
+    use({
+        'kylechui/nvim-surround',
+        tag = "*",
+        config = function()
+            require("nvim-surround").setup({})
+        end
+    })
 
     -- HTML
     use 'mattn/emmet-vim' -- html stuff (not LUA)
