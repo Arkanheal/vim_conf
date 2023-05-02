@@ -18,6 +18,13 @@ lsp.configure('lua-language-server', {
     }
 })
 
+require("lspconfig").yamlls.setup({
+    settings = {
+        yaml = {
+            keyOrdering = false
+        }
+    }
+})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
