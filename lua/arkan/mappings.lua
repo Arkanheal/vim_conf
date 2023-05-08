@@ -32,10 +32,9 @@ vmap("<A-k>", ":m '<-2<CR>gv=gv")
 -- keep search matches in the middle of the window
 nmap('n', 'nzzzv')
 nmap('N', 'Nzzzv')
-nmap('J', 'mz`J`z')
+nmap('J', 'mzJ`z')
 nmap('<C-d>', '<C-d>zz')
 nmap('<C-u>', '<C-u>zz')
-
 
 xmap('<leader>p', "\"_dP")
 
@@ -43,7 +42,6 @@ nmap('<leader>y', "\"+y")
 vmap('<leader>y', "\"+y")
 nmap('<leader>Y', "\"+Y")
 
-nmap('<leader>d', "\"_d")
 nmap('<leader>d', "\"_d")
 
 nmap("Q", "<nop>")

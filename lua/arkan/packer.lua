@@ -8,9 +8,6 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Test
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end }
 
     -- Fuzzy finder
     use {
