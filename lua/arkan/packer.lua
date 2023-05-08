@@ -15,8 +15,6 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use 'olacin/telescope-gitmoji.nvim'
-
 
     -- Commons
     use({
@@ -26,6 +24,7 @@ return require('packer').startup(function(use)
             require("nvim-surround").setup({})
         end
     })
+    use "folke/neodev.nvim"
 
     -- HTML
     use 'mattn/emmet-vim' -- html stuff (not LUA)
@@ -85,6 +84,12 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+
+    -- DAP
+    use 'mfussenegger/nvim-dap'
+    use { 'rcarriga/nvim-dap-ui', requires = {"mfussenegger/nvim-dap"} }
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'nvim-telescope/telescope-dap.nvim'
 
     -- Leetcode
     use 'ianding1/leetcode.vim'
