@@ -20,7 +20,7 @@ lsp.configure('lua-language-server', {
     }
 })
 
-require("lspconfig").yamlls.setup({
+lsp.configure("yamlls", {
     settings = {
         yaml = {
             keyOrdering = false
