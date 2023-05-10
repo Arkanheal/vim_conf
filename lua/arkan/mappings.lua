@@ -55,4 +55,5 @@ nmap("<leader>k", "<cmd>lnext<CR>zz")
 nmap("<leader>j", "<cmd>lprev<CR>zz")
 
 nmap("<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-nmap("<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+nmap("<leader>x", "<cmd>!chmod +x %<CR>")
+nmap("<leader>m", "<cmd>!make run<CR>")
