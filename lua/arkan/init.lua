@@ -9,6 +9,13 @@ local RemoveWhiteLinesGroup = augroup('RemoveWhiteLines', {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
+augroup("setIndent", {clear = true})
+autocmd("FileType", {
+    group = "setIndent",
+    pattern = "make",
+    command = "setlocal noexpandtab shiftwidth=8 softtabstop=0"
+})
+
 function R(name)
     require("plenary.reload").reload_module(name)
 end

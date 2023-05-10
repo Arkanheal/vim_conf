@@ -50,9 +50,6 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Tab Management
-    use { 'FotiadisM/tabset.nvim' }
-
     -- Langage parser (experimental)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')

@@ -35,3 +35,4 @@ vim.opt.synmaxcol = 300
 vim.opt.showbreak= '↪'
 
 vim.g.mapleader = ','
+
