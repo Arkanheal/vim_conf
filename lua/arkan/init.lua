@@ -15,6 +15,11 @@ autocmd("FileType", {
     pattern = "make",
     command = "setlocal noexpandtab shiftwidth=8 softtabstop=0"
 })
+autocmd("FileType", {
+    group = "setIndent",
+    pattern = "c",
+    command = "setlocal shiftwidth=2"
+})
 
 function R(name)
     require("plenary.reload").reload_module(name)
