@@ -1,5 +1,5 @@
 local lsp = require("lsp-zero")
-local lsp_config = require("lspconfig")
+local lspconfig = require("lspconfig")
 
 lsp.preset("recommended")
 
@@ -10,7 +10,7 @@ lsp.ensure_installed({
 })
 
 -- Fix Undefined global 'vim'
-lsp_config.lua_ls.setup({
+lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {
@@ -20,12 +20,8 @@ lsp_config.lua_ls.setup({
     }
 })
 
-lsp_config.gopls.setup({
-    filetypes = {
-        'go',
-        'gomod',
-        'gotmpl',
-    }
+lspconfig.gopls.setup({
+    filetypes = { "go", "gomod", "gotmpl", "gowork" }
 })
 
 vim.api.nvim_create_autocmd('BufWritePre', {
@@ -35,7 +31,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end
 })
 
-lsp_config.yamlls.setup({
+lspconfig.yamlls.setup({
     settings = {
         yaml = {
             keyOrdering = false,
