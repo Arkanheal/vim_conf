@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Test
+    use "b0o/schemastore.nvim"
 
     -- Fuzzy finder
     use {
