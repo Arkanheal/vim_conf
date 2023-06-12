@@ -7,9 +7,6 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Test
-    use "b0o/schemastore.nvim"
-
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
