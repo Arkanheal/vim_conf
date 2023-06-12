@@ -4,9 +4,10 @@ local lspconfig = require("lspconfig")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-    'tsserver',
-    'lua_ls',
-    'rust_analyzer',
+  'tsserver',
+  'lua_ls',
+  'rust_analyzer',
+  'yamlls',
 })
 
 -- Fix Undefined global 'vim'
@@ -29,6 +30,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     callback = function()
         vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
     end
+})
+
+lspconfig.hls.setup({
+    settings = {
+        haskell = {
+            formattingProvider = "fourmolu"
+        }
+    }
 })
 
 lspconfig.yamlls.setup({
