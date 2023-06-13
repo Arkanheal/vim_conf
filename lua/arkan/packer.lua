@@ -82,10 +82,21 @@ return require('packer').startup(function(use)
 
     -- DAP
     use 'mfussenegger/nvim-dap'
-    use { 'rcarriga/nvim-dap-ui', requires = {"mfussenegger/nvim-dap"} }
-    use 'leoluz/nvim-dap-go'
+    use { 'rcarriga/nvim-dap-ui', requires = { "mfussenegger/nvim-dap" } }
     use 'theHamsta/nvim-dap-virtual-text'
     use 'nvim-telescope/telescope-dap.nvim'
+
+    -- Adapters
+    ---- Go
+    use 'leoluz/nvim-dap-go'
+
+    ---- JS/TS
+    use {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+    }
+    use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
 
     -- Leetcode
     use 'ianding1/leetcode.vim'
