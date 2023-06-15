@@ -17,7 +17,7 @@ autocmd("FileType", {
 })
 autocmd("FileType", {
     group = "setIndent",
-    pattern = { "typescript",  "javascript", "c", "haskell" },
+    pattern = { "html", "typescript",  "javascript", "c", "haskell" },
     command = "setlocal shiftwidth=2"
 })
 
