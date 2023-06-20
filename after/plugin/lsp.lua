@@ -1,3 +1,13 @@
+
+require("neodev").setup({
+    override = function (root_dir, library)
+        if require("neodev.util").has_file(root_dir, "~/personal/eisenhower.nvim/") then
+            library.enabled = true
+            library.plugins = true
+        end
+    end
+})
+
 local lsp = require("lsp-zero")
 local lspconfig = require("lspconfig")
 

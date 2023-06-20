@@ -7,6 +7,10 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- DEVING
+    use '~/personal/eisenhower.nvim'
+    use "folke/neodev.nvim"
+
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -22,7 +26,6 @@ return require('packer').startup(function(use)
             require("nvim-surround").setup({})
         end
     })
-    use "folke/neodev.nvim"
 
     -- HTML
     use 'mattn/emmet-vim' -- html stuff (not LUA)
