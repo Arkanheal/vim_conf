@@ -43,6 +43,7 @@ vmap('<leader>y', "\"+y")
 nmap('<leader>Y', "\"+Y")
 
 nmap('<leader>d', "\"_d")
+vmap('<leader>d', "\"_d")
 
 nmap("Q", "<nop>")
 nmap("<leader>f", function()
