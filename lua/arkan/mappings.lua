@@ -46,9 +46,6 @@ nmap('<leader>d', "\"_d")
 vmap('<leader>d', "\"_d")
 
 nmap("Q", "<nop>")
-nmap("<leader>f", function()
-    vim.lsp.buf.format()
-end)
 
 nmap("<C-k>", "<cmd>cnext<CR>zz")
 nmap("<C-j>", "<cmd>cprev<CR>zz")
