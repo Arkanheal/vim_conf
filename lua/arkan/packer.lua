@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- test
+
     -- DEVING
     use '~/personal/eisenhower.nvim'
     use "folke/neodev.nvim"
@@ -82,6 +84,11 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+
+    -- Lint
+    use 'mfussenegger/nvim-lint'
+    -- Formatter
+    use 'mhartington/formatter.nvim'
 
     -- DAP
     use 'mfussenegger/nvim-dap'
