@@ -1,113 +1,149 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+return require("packer").startup(function(use)
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
 
-    -- test
+	-- test
+	use({
+		"epwalsh/obsidian.nvim",
+		config = function()
+			require("obsidian").setup({
+				dir = "~/Obsidian Vault",
 
-    -- DEVING
-    use '~/personal/eisenhower.nvim'
-    use "folke/neodev.nvim"
+				daily_notes = {
+					-- Optional, if you keep daily notes in a separate directory.
+					folder = "notes/dailies",
+					-- Optional, if you want to change the date format for daily notes.
+					date_format = "%Y-%m-%d",
+				},
 
-    -- Fuzzy finder
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+				completion = {
+					nvim_cmp = true,
+					-- Trigger completion at 2 chars
+					min_chars = 2,
+					-- Where to put new notes created from completion. Valid options are
+					--  * "current_dir" - put new notes in same directory as the current buffer.
+					--  * "notes_subdir" - put new notes in the default notes subdirectory.
+					new_notes_location = "current_dir",
 
-    -- Commons
-    use({
-        'kylechui/nvim-surround',
-        tag = "*",
-        config = function()
-            require("nvim-surround").setup({})
-        end
-    })
+					-- Whether to add the output of the node_id_func to new notes in autocompletion.
+					-- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
+					prepend_note_id = true,
+				},
 
-    -- HTML
-    use 'mattn/emmet-vim' -- html stuff (not LUA)
+				-- Optional, key mappings.
+				mappings = {
+					-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+					["gf"] = require("obsidian.mapping").gf_passthrough(),
+				},
+			})
+		end,
+	})
 
-    -- Pretty stuff
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
-    use {
-        'folke/trouble.nvim',
-        requires = 'nvim-tree/nvim-web-devicons',
-        config = function()
-            require('trouble').setup {
-                icons = false,
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
-    }
+	-- DEVING
+	use("~/personal/eisenhower.nvim")
+	use("folke/neodev.nvim")
 
-    -- Langage parser (experimental)
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('nvim-treesitter/playground')
-    use('nvim-treesitter/nvim-treesitter-context')
-    use('theprimeagen/harpoon')
-    use('mbbill/undotree')
-    use('tpope/vim-fugitive')
-    use 'nvim-lualine/lualine.nvim' -- Pretty status line
+	-- Fuzzy finder
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		-- or                            , branch = '0.1.x',
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-    -- LSP
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+	-- Commons
+	use({
+		"kylechui/nvim-surround",
+		tag = "*",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	})
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
+	-- HTML
+	use("mattn/emmet-vim") -- html stuff (not LUA)
 
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
-        }
-    }
+	-- Pretty stuff
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
+		config = function()
+			vim.cmd("colorscheme rose-pine")
+		end,
+	})
+	use({
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				icons = false,
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 
-    -- Lint
-    use 'mfussenegger/nvim-lint'
-    -- Formatter
-    use 'mhartington/formatter.nvim'
+	-- Langage parser (experimental)
+	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+	use("nvim-treesitter/playground")
+	use("nvim-treesitter/nvim-treesitter-context")
+	use("theprimeagen/harpoon")
+	use("mbbill/undotree")
+	use("tpope/vim-fugitive")
+	use("nvim-lualine/lualine.nvim") -- Pretty status line
 
-    -- DAP
-    use 'mfussenegger/nvim-dap'
-    use { 'rcarriga/nvim-dap-ui', requires = { "mfussenegger/nvim-dap" } }
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'nvim-telescope/telescope-dap.nvim'
+	-- LSP
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
-    -- Adapters
-    ---- Go
-    use 'leoluz/nvim-dap-go'
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
 
-    ---- JS/TS
-    use {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-    }
-    use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+	})
 
-    -- Leetcode
-    use 'ianding1/leetcode.vim'
+	-- Lint
+	use("mfussenegger/nvim-lint")
+	-- Formatter
+	use("mhartington/formatter.nvim")
+
+	-- DAP
+	use("mfussenegger/nvim-dap")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("theHamsta/nvim-dap-virtual-text")
+	use("nvim-telescope/telescope-dap.nvim")
+
+	-- Adapters
+	---- Go
+	use("leoluz/nvim-dap-go")
+
+	---- JS/TS
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	})
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+
+	-- Leetcode
+	use("ianding1/leetcode.vim")
 end)
