@@ -1,5 +1,5 @@
 require("obsidian").setup({
-	dir = "/home/arkan/main_vault/",
+	dir = "~/main_vault/",
 
 	daily_notes = {
 		-- Optional, if you keep daily notes in a separate directory.
