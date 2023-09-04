@@ -45,6 +45,9 @@ require("formatter").setup({
 		typescript = {
 			require("formatter.filetypes.typescript").prettier,
 		},
+		go = {
+			require("formatter.filetypes.go").gofmt,
+		},
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
