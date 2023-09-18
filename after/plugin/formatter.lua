@@ -48,6 +48,9 @@ require("formatter").setup({
 		go = {
 			require("formatter.filetypes.go").gofmt,
 		},
+		json = {
+			require("formatter.filetypes.json").jq,
+		},
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype

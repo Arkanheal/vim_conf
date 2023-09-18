@@ -5,6 +5,8 @@ handle:close()
 require("obsidian").setup({
 	dir = "~/main_vault/",
 
+	notes_subdir = "notes",
+
 	daily_notes = {
 		-- Optional, if you keep daily notes in a separate directory.
 		folder = "notes/dailies",
