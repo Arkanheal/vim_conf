@@ -8,7 +8,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- test
-	use("epwalsh/obsidian.nvim")
+	use("jrop/mongo.nvim")
 
 	-- DEVING
 	use("~/personal/eisenhower.nvim")
@@ -109,6 +109,9 @@ return require("packer").startup(function(use)
 		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	})
 	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+
+	-- Obsidian
+	use("epwalsh/obsidian.nvim")
 
 	-- Leetcode
 	use("ianding1/leetcode.vim")
