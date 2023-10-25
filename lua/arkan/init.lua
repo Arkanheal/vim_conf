@@ -1,7 +1,7 @@
 require("arkan.settings")
 require("arkan.mappings")
 -- Packer kinda creates lag
--- require("arkan.packer")
+require("arkan.packer")
 
 local augroup = vim.api.nvim_create_augroup
 local RemoveWhiteLinesGroup = augroup("RemoveWhiteLines", {})

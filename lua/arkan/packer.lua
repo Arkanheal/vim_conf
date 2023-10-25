@@ -17,7 +17,7 @@ return require("packer").startup(function(use)
 	-- Fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.4",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
@@ -36,12 +36,16 @@ return require("packer").startup(function(use)
 
 	-- Pretty stuff
 	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
+		"folke/tokyonight.nvim",
+		as = "tokyonight",
+		lazy = false,
+		priority = 1000,
+		opts = {},
 		config = function()
-			vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme tokyonight")
 		end,
 	})
+
 	use({
 		"folke/trouble.nvim",
 		requires = "nvim-tree/nvim-web-devicons",
