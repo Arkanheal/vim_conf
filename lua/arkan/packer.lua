@@ -9,6 +9,13 @@ return require("packer").startup(function(use)
 
 	-- test
 	use("jrop/mongo.nvim")
+	use({
+		"yanskun/gotests.nvim",
+		ft = "go",
+		config = function()
+			require("gotests").setup()
+		end,
+	})
 
 	-- DEVING
 	use("~/personal/eisenhower.nvim")
