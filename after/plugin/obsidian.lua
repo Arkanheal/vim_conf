@@ -12,6 +12,8 @@ require("obsidian").setup({
 		folder = "notes/dailies",
 		-- Optional, if you want to change the date format for daily notes.
 		date_format = "%Y-%m-%d",
+
+		templates = "daily_note.md",
 	},
 
 	completion = {
@@ -55,9 +57,30 @@ require("obsidian").setup({
 		end
 	end,
 
+	-- Optional, for templates (see below).
+	templates = {
+		subdir = "templates",
+		date_format = "%Y-%m-%d",
+		time_format = "%H:%M",
+		-- A map for custom variables, the key should be the variable and the value a function
+		substitutions = {},
+	},
+
 	-- Optional, key mappings.
 	mappings = {
 		-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-		["gf"] = require("obsidian.mapping").gf_passthrough(),
+		["gf"] = {
+			action = function()
+				return require("obsidian").util.gf_passthrough()
+			end,
+			opts = { noremap = false, expr = true, buffer = true },
+		},
+		-- Toggle check-boxes.
+		["<leader>ch"] = {
+			action = function()
+				return require("obsidian").util.toggle_checkbox()
+			end,
+			opts = { buffer = true },
+		},
 	},
 })
