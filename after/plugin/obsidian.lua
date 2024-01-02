@@ -13,7 +13,7 @@ require("obsidian").setup({
 		-- Optional, if you want to change the date format for daily notes.
 		date_format = "%Y-%m-%d",
 
-		templates = "daily_note.md",
+		template = "daily_note.md",
 	},
 
 	completion = {
@@ -51,7 +51,7 @@ require("obsidian").setup({
 	follow_url_func = function(url)
 		-- Open the URL in the default web browser.
 		if string.match(os_result, "Linux") ~= nil then
-			vim.fn.jobstart({ "xdg-open", url }) -- linux
+			vim.fn.jobstart({ "xdg-open", url }) -- Linux
 		elseif string.match(os_result, "Mac") ~= nil then
 			vim.fn.jobstart({ "open", url }) -- Mac OS
 		end
