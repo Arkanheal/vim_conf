@@ -59,3 +59,5 @@ nmap("<leader>m", "<cmd>!make run<CR>")
 -- Create command for shell execution
 vim.api.nvim_create_user_command("Curl", "set splitright | vnew | set filetype=json | read !sh # | jq", {})
 nmap("<leader>cur", ":Curl<CR>")
+
+nmap("<leader>otd", ":ObsidianToday<CR>")
