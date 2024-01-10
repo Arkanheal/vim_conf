@@ -8,14 +8,6 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- test
-	use("jrop/mongo.nvim")
-	use({
-		"yanskun/gotests.nvim",
-		ft = "go",
-		config = function()
-			require("gotests").setup()
-		end,
-	})
 
 	-- DEVING
 	use("~/personal/eisenhower.nvim")
@@ -112,6 +104,13 @@ return require("packer").startup(function(use)
 	-- Adapters
 	---- Go
 	use("leoluz/nvim-dap-go")
+	use({
+		"yanskun/gotests.nvim",
+		ft = "go",
+		config = function()
+			require("gotests").setup()
+		end,
+	})
 
 	---- JS/TS
 	use({

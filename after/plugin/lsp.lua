@@ -33,20 +33,6 @@ lspconfig.lua_ls.setup({
 
 lspconfig.tsserver.setup({})
 
--- lspconfig.quick_lint_js.setup({
--- 	handlers = {
--- 		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
--- 			update_in_insert = true,
--- 		}),
--- 	},
--- 	filetypes = {
--- 		"javascript",
--- 		"javascriptreact",
--- 		"typescript",
--- 		"typescriptreact",
--- 	},
--- })
-
 lspconfig.gopls.setup({
 	filetypes = { "go", "gomod", "gotmpl", "gowork" },
 })
