@@ -61,3 +61,5 @@ vim.api.nvim_create_user_command("Curl", "set splitright | vnew | set filetype=j
 nmap("<leader>cur", ":Curl<CR>")
 
 nmap("<leader>otd", ":ObsidianToday<CR>")
+
+nmap("<leader>ht", ":Hardtime toggle<CR>")
