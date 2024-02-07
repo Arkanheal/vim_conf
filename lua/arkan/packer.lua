@@ -8,10 +8,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- test
-	use({
-		"m4xshen/hardtime.nvim",
-		requires = { { "MunifTanjim/nui.nvim" } },
-	})
+	use("tjdevries/sponge-bob.nvim")
 
 	-- DEVING
 	use("~/personal/eisenhower.nvim")
